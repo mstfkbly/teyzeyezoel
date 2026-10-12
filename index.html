@@ -1,0 +1,677 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15172b">
+  <meta name="description" content="Tayyibe Teyze, iyi ki varsın! Sana özel küçük bir sürpriz.">
+  <title>Tayyibe Teyze | İyi ki Varsın 🌷</title>
+
+  <!-- Çiçekli favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2315172b'/%3E%3Ctext x='32' y='46' font-size='43' text-anchor='middle'%3E%F0%9F%8C%B7%3C/text%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg: #15172b;
+      --panel: #24263e;
+      --gold: #f4d49b;
+      --pink: #f7b8ce;
+      --white: #fff8f5;
+      --muted: #c9c6d4;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--white);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse at 15% 10%, #51345155, transparent 40%),
+        radial-gradient(ellipse at 90% 80%, #69513a44, transparent 45%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    button { font: inherit; cursor: pointer; }
+
+    .screen {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 18px;
+    }
+
+    .hidden { display: none !important; }
+
+    .card {
+      width: min(100%, 590px);
+      padding: clamp(25px, 6vw, 48px);
+      text-align: center;
+      border: 1px solid #ffffff20;
+      border-radius: 30px;
+      background: linear-gradient(145deg, #2c2c46ee, #191b30f5);
+      box-shadow: 0 25px 80px #0005, inset 0 1px #ffffff12;
+      position: relative;
+      overflow: hidden;
+      animation: appear .7s ease both;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(42px, 9vw, 67px);
+      color: var(--gold);
+      margin: 22px 0 10px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 7vw, 43px);
+      color: var(--gold);
+      margin: 14px 0;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    .hero-emoji {
+      font-size: 100px;
+      margin: 25px auto;
+      display: block;
+      filter: drop-shadow(0 12px 20px #f7b8ce33);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .button {
+      border: 0;
+      border-radius: 50px;
+      padding: 15px 27px;
+      min-height: 51px;
+      background: linear-gradient(120deg, #f6dca9, #e7b87e);
+      color: #282238;
+      font-weight: 750;
+      box-shadow: 0 9px 28px #d1a66a35;
+      transition: transform .2s, filter .2s;
+    }
+
+    .button:hover { transform: translateY(-3px); filter: brightness(1.07); }
+    .button:active { transform: scale(.97); }
+
+    .secondary {
+      color: var(--gold);
+      background: #ffffff0c;
+      border: 1px solid #f4d49b55;
+      box-shadow: none;
+    }
+
+    .small-note {
+      font-size: 12px;
+      color: #aaa9bb;
+      margin-top: 21px;
+    }
+
+    .section {
+      width: min(100% - 32px, 780px);
+      margin: 0 auto;
+      padding: 70px 0;
+      text-align: center;
+    }
+
+    .intro { padding-top: 85px; }
+
+    .divider {
+      width: 75px;
+      height: 2px;
+      margin: 22px auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .message-card {
+      min-height: 195px;
+      display: grid;
+      place-items: center;
+      padding: 26px;
+      border-radius: 25px;
+      background: #ffffff0b;
+      border: 1px solid #ffffff18;
+      margin: 28px 0 20px;
+    }
+
+    #messageText {
+      font-family: Georgia, serif;
+      font-size: clamp(22px, 5vw, 32px);
+      line-height: 1.55;
+      color: var(--white);
+    }
+
+    .count { color: var(--pink); font-size: 13px; letter-spacing: 2px; }
+
+    .flower-box {
+      margin: 28px auto;
+      width: 210px;
+      height: 225px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #f4d49b33;
+      border-radius: 110px 110px 25px 25px;
+      background: radial-gradient(circle, #f7b8ce22, #ffffff03 70%);
+    }
+
+    .flower {
+      border: none;
+      background: transparent;
+      font-size: 115px;
+      line-height: 1.2;
+      animation: float 3s ease-in-out infinite;
+      transition: transform .5s;
+    }
+
+    .flower.bloom {
+      transform: scale(1.25) rotate(12deg);
+      animation: none;
+    }
+
+    .reveal {
+      animation: appear .9s ease both;
+      color: var(--white);
+    }
+
+    .meter {
+      margin: 30px 0;
+      height: 24px;
+      overflow: hidden;
+      border-radius: 30px;
+      background: #ffffff14;
+      border: 1px solid #ffffff22;
+    }
+
+    .meter-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #e6a6c5, #f4d49b);
+      transition: width 2s cubic-bezier(.17,.67,.25,1);
+    }
+
+    .percentage {
+      font-family: Georgia, serif;
+      font-size: 58px;
+      color: var(--gold);
+      margin: 10px 0;
+    }
+
+    .final-card {
+      border-radius: 28px;
+      padding: 40px 25px;
+      background: linear-gradient(150deg, #49304480, #29253f, #5e483555);
+      border: 1px solid #f4d49b44;
+      box-shadow: 0 25px 65px #0003;
+    }
+
+    .heart {
+      font-size: 65px;
+      display: inline-block;
+      animation: heartbeat 1.8s infinite;
+    }
+
+    .final-text { color: #fff1ed; font-size: 18px; }
+
+    .signature {
+      margin-top: 32px;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      font-size: 23px;
+    }
+
+    .music-button {
+      position: fixed;
+      z-index: 15;
+      right: 17px;
+      top: 17px;
+      width: 47px;
+      height: 47px;
+      border-radius: 50%;
+      border: 1px solid #f4d49b55;
+      color: var(--gold);
+      background: #29283eeb;
+      font-size: 20px;
+      box-shadow: 0 5px 20px #0003;
+    }
+
+    .particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 20;
+      font-size: 25px;
+      animation: particleFall var(--duration) linear forwards;
+      left: var(--left);
+      top: -45px;
+    }
+
+    footer {
+      text-align: center;
+      color: #aaa5b8;
+      font-size: 12px;
+      padding: 30px 15px 45px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      45% { transform: scale(1.12); }
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes particleFall {
+      to {
+        transform: translate(var(--drift), 110vh) rotate(650deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .section { padding: 55px 0; }
+      .hero-emoji { font-size: 80px; }
+      .flower { font-size: 95px; }
+      .card { border-radius: 24px; }
+      .final-card { padding: 30px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button id="musicButton" class="music-button hidden"
+    aria-label="Müziği aç veya kapat" title="Müzik aç/kapat">🔇</button>
+
+  <!-- SÜRPRİZ AÇILIŞ -->
+  <div id="welcome" class="screen">
+    <div class="card">
+      <div class="eyebrow">✨ Çok özel birine ✨</div>
+      <span class="hero-emoji">🎁</span>
+      <h2>Bir dakika Tayyibe Teyze!</h2>
+      <p>
+        Önemli bir duyurumuz var! 🚨<br>
+        İş yerinin güler yüzlü, şakacı ve kocaman kalpli
+        teyzesi için özel bir sürpriz hazırlandı.
+      </p>
+      <p>Bu güzellikleri görmek için hazır mısın? 😄</p>
+      <button class="button" id="startButton">Sürprizi Aç 🎀</button>
+      <div class="small-note">Uyarı: İçeriğinde bolca tebessüm bulunur!</div>
+    </div>
+  </div>
+
+  <!-- ANA SİTE -->
+  <main id="main" class="hidden">
+
+    <section class="section intro">
+      <div class="eyebrow">🌷 Sana özel hazırlanmıştır 🌷</div>
+      <span class="hero-emoji">💐</span>
+      <h1>Tayyibe Teyze</h1>
+      <h2>İyi ki Varsın!</h2>
+      <div class="divider"></div>
+      <p>
+        Bazı insanlar vardır, geldikleri ortam güzelleşir.<br>
+        Gülümsemeleriyle neşe, sözleriyle huzur verirler.<br>
+        İşte sen tam da böyle bir insansın.
+      </p>
+      <p style="color:var(--pink)">Ve bugün bu sayfanın yıldızı sensin! ✨</p>
+      <button class="button" id="exploreButton">Bakalım Neler Var? 👀</button>
+    </section>
+
+    <section id="messages" class="section">
+      <div class="eyebrow">Tayyibe Teyze Özel Servisi</div>
+      <h2>Biraz Gülümseyelim mi? 😄</h2>
+      <p>Her dokunuşta sana özel bir mesaj gelecek.</p>
+
+      <div class="message-card">
+        <div id="messageText" aria-live="polite">
+          Gülümsemeye hazırsan aşağıdaki butona bas! 🌸
+        </div>
+      </div>
+
+      <div id="messageCount" class="count">Sürpriz mesajlar bekliyor</div>
+      <div style="margin-top:22px">
+        <button class="button" id="messageButton">Bir Mesaj Göster 💌</button>
+      </div>
+    </section>
+
+    <section id="flowerSection" class="section">
+      <div class="eyebrow">Küçük Bir Hediye</div>
+      <h2>Bu Çiçekler Sana! 💐</h2>
+      <p>Gerçek çiçekler solar ama güzel insanların bıraktığı izler kalıcıdır.</p>
+
+      <div class="flower-box">
+        <button id="flowerButton" class="flower"
+          aria-label="Çiçek sürprizini aç">💐</button>
+      </div>
+
+      <p>Çiçeklere dokunmayı unutma! 🌷</p>
+
+      <div id="flowerMessage" class="hidden reveal">
+        <h2>Güzel Kalpli Teyzeme 🌸</h2>
+        <p>
+          Bu çiçekler; güler yüzün, anlayışın,
+          güzel şakaların ve herkese gösterdiğin
+          içtenliğin için küçük bir teşekkür.
+        </p>
+        <p style="color:var(--pink)">İyi ki seni tanımışım!</p>
+      </div>
+    </section>
+
+    <section id="happiness" class="section">
+      <div class="eyebrow">Özel Geliştirilmiş Test 😎</div>
+      <h2>Tayyibe Teyze Mutluluk Ölçer</h2>
+      <p>Acaba senin neşe ve güzel kalplilik seviyen kaç?</p>
+
+      <div class="percentage" id="percentage">0%</div>
+      <div class="meter"><div class="meter-fill" id="meterFill"></div></div>
+
+      <button id="measureButton" class="button">Hemen Ölçelim 🔍</button>
+
+      <div id="meterResult" class="hidden reveal">
+        <h2>Ölçüm Tamamlandı! 🎉</h2>
+        <p>
+          Sonuç: %100 neşe, %100 anlayış, %100 güzel kalp!
+          Ancak bu kadar güzel kalplilik sistem tarafından
+          tam olarak ölçülemiyor. Cihaz pes etti! 😂
+        </p>
+        <p style="color:var(--gold)">Tayyibe teyze sınıfı: EŞSİZ ⭐</p>
+      </div>
+    </section>
+
+    <section id="final" class="section">
+      <div class="final-card">
+        <div class="eyebrow">Kalpten Gelen Birkaç Söz</div>
+        <div class="heart">❤️</div>
+        <h2>İyi ki Varsın, Tayyibe Teyze</h2>
+        <div class="divider"></div>
+
+        <p class="final-text">
+          Hayatta herkesle karşılaşabiliriz ama herkes
+          kalbimizde güzel bir yer edinemez.
+        </p>
+
+        <p class="final-text">
+          Sen güler yüzünle, şakalarınla, anlayışınla
+          ve güzel kalbinle çevrendeki insanlara
+          kendilerini iyi hissettiriyorsun.
+        </p>
+
+        <p class="final-text">
+          Sana teyze diyorum ama bu sadece bir hitap değil.
+          İçinde sevgi, saygı ve samimiyet var.
+        </p>
+
+        <p class="final-text">
+          Yüzündeki gülümseme hiç eksik olmasın.
+          Hayat da sana, senin insanlara kattığın
+          güzellikleri getirsin.
+        </p>
+
+        <div class="signature">İyi ki tanımışım seni. 🌷</div>
+        <p style="color:var(--pink)">Hep böyle güzel gül, olur mu? 😊</p>
+
+        <button class="button" id="finalButton">
+          Biraz Daha Mutluluk! 🎉
+        </button>
+      </div>
+    </section>
+
+    <footer>
+      Sevgiyle ve kocaman bir tebessümle hazırlandı. ❤️<br>
+      © Tayyibe Teyze'ye Özel
+    </footer>
+  </main>
+
+  <script>
+    "use strict";
+
+    const $ = id => document.getElementById(id);
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    // Açılış
+    $("startButton").addEventListener("click", () => {
+      $("welcome").classList.add("hidden");
+      $("main").classList.remove("hidden");
+      $("musicButton").classList.remove("hidden");
+      window.scrollTo(0, 0);
+      celebrate(35);
+    });
+
+    $("exploreButton").addEventListener("click", () => {
+      $("messages").scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+    });
+
+    // Eğlenceli mesajlar
+    const messages = [
+      "İş yerinin neşe kaynağı tespit edildi: TAYYİBE TEYZE! 😂",
+      "Gülüşün bulaşıcı... İyi ki bunun karantinası yok! 🌸",
+      "Teyze dedik ama kalbimizde VIP yer verdik! ❤️",
+      "Senin olduğun yerde moral bozukluğu fazla mesai yapamaz! 😄",
+      "Anlayış bol, şaka bol, güzel kalp desen zaten sınırsız! 💐",
+      "Bazı insanlar kahve gibi: Bir araya gelince insanın içini ısıtır. ☕",
+      "Tayyibe teyzenin bulunduğu ortamda suratsızlık yapmak yasaktır! 🚫😂",
+      "Bu kadar güler yüzlü olmak için özel eğitim mi aldın teyze? 😎",
+      "Senin güzel kalbine kocaman bir maşallah! 🧿",
+      "Bir insan hem bu kadar şakacı hem de bu kadar anlayışlı olur mu? Oluyormuş! 🌷",
+      "İyi ki varsın teyze! Sen hep gül ki dünya biraz daha güzelleşsin. 💖"
+    ];
+
+    let messageIndex = 0;
+
+    $("messageButton").addEventListener("click", () => {
+      $("messageText").textContent = messages[messageIndex];
+      messageIndex = (messageIndex + 1) % messages.length;
+
+      $("messageCount").textContent =
+        `${messageIndex === 0 ? messages.length : messageIndex} / ${messages.length}`;
+
+      if (messageIndex === 0) {
+        $("messageButton").textContent = "Bir Daha Gülümseyelim 🔄";
+        celebrate(20);
+      } else {
+        $("messageButton").textContent = "Bir Sonraki Mesaj 💌";
+      }
+    });
+
+    // Çiçek sürprizi
+    $("flowerButton").addEventListener("click", () => {
+      $("flowerButton").classList.add("bloom");
+      $("flowerMessage").classList.remove("hidden");
+      celebrate(32, ["🌸", "🌷", "💗", "✨", "🌼"]);
+    });
+
+    // Mutluluk ölçer
+    let measured = false;
+
+    $("measureButton").addEventListener("click", () => {
+      if (measured) {
+        $("meterResult").classList.remove("hidden");
+        celebrate(22);
+        return;
+      }
+
+      measured = true;
+      $("measureButton").disabled = true;
+      $("measureButton").textContent = "Ölçülüyor...";
+
+      let progress = 0;
+      const duration = reducedMotion ? 0 : 1900;
+      const start = performance.now();
+
+      function animate(now) {
+        const ratio = duration === 0 ? 1 : Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - ratio, 3);
+        progress = Math.round(eased * 100);
+
+        $("percentage").textContent = progress + "%";
+        $("meterFill").style.width = progress + "%";
+
+        if (ratio < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          $("percentage").textContent = "100%";
+          $("meterFill").style.width = "100%";
+          $("meterResult").classList.remove("hidden");
+          $("measureButton").disabled = false;
+          $("measureButton").textContent = "Yeniden Kutla 🎉";
+          celebrate(45);
+        }
+      }
+
+      requestAnimationFrame(animate);
+    });
+
+    $("finalButton").addEventListener("click", () => {
+      celebrate(70);
+      $("finalButton").textContent = "Kocaman Gülümse! 😊";
+    });
+
+    // Konfeti / çiçek yağmuru
+    function celebrate(amount = 30, symbols = ["🌸", "✨", "💗", "🌷", "🎉"]) {
+      if (reducedMotion) return;
+
+      const count = Math.min(amount, 80);
+
+      for (let i = 0; i < count; i++) {
+        const particle = document.createElement("span");
+        particle.className = "particle";
+        particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        particle.style.setProperty("--left", Math.random() * 100 + "vw");
+        particle.style.setProperty("--drift", (Math.random() * 160 - 80) + "px");
+        particle.style.setProperty("--duration", (3 + Math.random() * 3) + "s");
+        particle.style.animationDelay = Math.random() * 1.2 + "s";
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 7500);
+      }
+    }
+
+    // Harici dosya gerektirmeyen, hafif sentez piyano melodisi
+    let audioContext = null;
+    let musicTimer = null;
+    let musicOn = false;
+    let noteIndex = 0;
+
+    const melody = [
+      261.63, 329.63, 392, 523.25,
+      493.88, 392, 329.63, 293.66,
+      261.63, 329.63, 440, 392,
+      349.23, 329.63, 293.66, 261.63
+    ];
+
+    function playNote(freq) {
+      if (!audioContext) return;
+
+      const now = audioContext.currentTime;
+      const osc = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, now);
+
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.055, now + 0.045);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.85);
+
+      osc.connect(gain);
+      gain.connect(audioContext.destination);
+      osc.start(now);
+      osc.stop(now + 0.9);
+    }
+
+    $("musicButton").addEventListener("click", async () => {
+      if (!musicOn) {
+        try {
+          const AudioClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioClass) {
+            $("musicButton").title = "Tarayıcınız ses özelliğini desteklemiyor";
+            return;
+          }
+
+          if (!audioContext || audioContext.state === "closed") {
+            audioContext = new AudioClass();
+          }
+
+          await audioContext.resume();
+          musicOn = true;
+          $("musicButton").textContent = "🎵";
+          $("musicButton").setAttribute("aria-label", "Müziği kapat");
+
+          playNote(melody[noteIndex++ % melody.length]);
+
+          musicTimer = setInterval(() => {
+            if (musicOn) playNote(melody[noteIndex++ % melody.length]);
+          }, 680);
+        } catch (error) {
+          console.warn("Müzik başlatılamadı:", error);
+        }
+      } else {
+        musicOn = false;
+        clearInterval(musicTimer);
+        musicTimer = null;
+        $("musicButton").textContent = "🔇";
+        $("musicButton").setAttribute("aria-label", "Müziği aç");
+        if (audioContext && audioContext.state === "running") {
+          await audioContext.suspend();
+        }
+      }
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && musicOn) {
+        clearInterval(musicTimer);
+        musicTimer = null;
+        if (audioContext) audioContext.suspend();
+      } else if (!document.hidden && musicOn && audioContext) {
+        audioContext.resume().then(() => {
+          if (!musicTimer) {
+            musicTimer = setInterval(() => {
+              playNote(melody[noteIndex++ % melody.length]);
+            }, 680);
+          }
+        }).catch(() => {});
+      }
+    });
+  </script>
+</body>
+</html>
