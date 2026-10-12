@@ -3,248 +3,335 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101426">
-<meta name="description" content="Tayyibe Teyze için hazırlanmış, sevgi ve tebessüm dolu özel bir sürpriz.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111528">
+<meta name="description" content="Tayyibe Teyze'ye sevgi ve tebessüm dolu özel bir sürpriz.">
 <title>Tayyibe Teyze | İyi ki Varsın 🌷</title>
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='17' fill='%23101426'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-size='42'%3E%F0%9F%8C%B7%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23111528'/%3E%3Ctext x='32' y='46' font-size='43' text-anchor='middle'%3E%F0%9F%8C%B7%3C/text%3E%3C/svg%3E">
 
 <style>
-:root{
---bg:#101426;
---panel:#1c2239;
---gold:#f4d6a2;
---rose:#f6abc8;
---white:#fff8f1;
---muted:#bfc1d2;
---line:rgba(244,214,162,.22);
+:root {
+  --bg:#111528;
+  --panel:#22263e;
+  --gold:#f1d0a0;
+  --rose:#f6b6ce;
+  --white:#fff8f4;
+  --muted:#ccc7d6;
+  --border:rgba(241,208,160,.22);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-margin:0;
-background:
-radial-gradient(ellipse at 15% 12%,#52345666,transparent 35%),
-radial-gradient(ellipse at 90% 65%,#55452b55,transparent 36%),
-var(--bg);
-color:var(--white);
-font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
-overflow-x:hidden;
+* { box-sizing:border-box; }
+html,body { margin:0; width:100%; min-height:100%; }
+body {
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--white);
+  background:
+    radial-gradient(ellipse at 20% 10%,#58395666,transparent 45%),
+    radial-gradient(ellipse at 85% 90%,#60452b55,transparent 48%),
+    var(--bg);
+  overflow:hidden;
 }
-button{font:inherit;cursor:pointer}
-button:focus-visible{outline:3px solid var(--rose);outline-offset:4px}
-.hidden{display:none!important}
-#stars{position:fixed;inset:0;pointer-events:none;z-index:0}
-.star{
-position:absolute;width:2px;height:2px;border-radius:50%;
-background:#f7deb1;opacity:.35;
-animation:twinkle 3s ease-in-out infinite alternate;
+button { font:inherit; cursor:pointer; }
+button:focus-visible { outline:3px solid var(--rose); outline-offset:4px; }
+button:disabled { opacity:.5; cursor:not-allowed; }
+.hidden { display:none!important; }
+
+#stars {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
 }
-@keyframes twinkle{to{opacity:.9;transform:scale(1.6)}}
-.section{
-position:relative;z-index:1;
-width:min(100% - 32px,850px);
-margin:auto;
-padding:75px 0;
-text-align:center;
+.star {
+  position:absolute;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:var(--gold);
+  opacity:.3;
+  animation:twinkle 3s infinite alternate;
 }
-h1,h2,h3{
-font-family:Georgia,"Times New Roman",serif;
-font-weight:400;
+@keyframes twinkle {
+  to { opacity:.95; transform:scale(1.8); }
 }
-h1{
-font-size:clamp(48px,11vw,86px);
-line-height:1.1;
-margin:15px 0;
-background:linear-gradient(115deg,#c99b5c,#fff1c9,#d7ae72);
-background-size:200% auto;
--webkit-background-clip:text;
-background-clip:text;
-color:transparent;
-animation:goldshine 5s linear infinite;
+
+.app {
+  position:relative;
+  z-index:1;
+  width:100%;
+  min-height:100vh;
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+  padding:15px max(15px,env(safe-area-inset-right)) max(15px,env(safe-area-inset-bottom)) max(15px,env(safe-area-inset-left));
 }
-@keyframes goldshine{to{background-position:200% center}}
-h2{font-size:clamp(31px,7vw,48px);color:var(--gold);margin:15px 0}
-h3{font-size:24px;color:var(--gold)}
-p{font-size:16px;line-height:1.9;color:var(--muted)}
-.kicker{
-font-size:11px;letter-spacing:3px;
-text-transform:uppercase;color:var(--gold);
-font-weight:700;
+
+.topbar {
+  width:min(100%,680px);
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:7px 2px 12px;
 }
-.divider{
-height:2px;width:95px;margin:25px auto;
-background:linear-gradient(90deg,transparent,var(--gold),transparent);
+.brand {
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:1.8px;
+  font-weight:700;
 }
-.btn{
-border:0;border-radius:999px;
-padding:16px 28px;min-height:54px;
-color:#252033;font-weight:750;
-background:linear-gradient(120deg,#ffe6b6,#dba76e);
-box-shadow:0 12px 40px #edbf7950;
-transition:transform .2s,filter .2s;
+.top-actions { display:flex; gap:7px; }
+.icon-btn {
+  border:1px solid var(--border);
+  color:var(--gold);
+  background:#ffffff0c;
+  border-radius:50%;
+  width:42px;
+  height:42px;
+  flex-shrink:0;
 }
-.btn:hover{transform:translateY(-3px);filter:brightness(1.08)}
-.btn:active{transform:scale(.96)}
-.btn-outline{
-background:#ffffff0a;color:var(--gold);
-border:1px solid var(--line);box-shadow:none;
+.progress-wrap {
+  width:min(100%,680px);
+  margin:0 auto;
 }
-.glass{
-background:linear-gradient(145deg,#29304bbd,#1a1d32e8);
-border:1px solid var(--line);
-border-radius:30px;
-box-shadow:0 25px 75px #0005,inset 0 1px #ffffff11;
+.progress-info {
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:11px;
+  margin-bottom:9px;
 }
-#opening{
-min-height:100svh;
-display:flex;align-items:center;justify-content:center;
-padding:22px;position:relative;z-index:2;
+.progress {
+  height:5px;
+  border-radius:20px;
+  overflow:hidden;
+  background:#ffffff20;
 }
-.open-card{
-width:min(100%,600px);
-text-align:center;padding:45px 23px;
-animation:rise 1s ease both;
+#progressFill {
+  height:100%;
+  width:14.285%;
+  background:linear-gradient(90deg,var(--rose),var(--gold));
+  border-radius:20px;
+  transition:width .5s ease;
 }
-@keyframes rise{
-from{opacity:0;transform:translateY(30px)}
-to{opacity:1;transform:translateY(0)}
+
+.stage-area {
+  display:flex;
+  flex:1;
+  align-items:center;
+  justify-content:center;
+  min-height:0;
+  padding:16px 0;
 }
-.gift{
-display:block;font-size:115px;
-border:0;background:none;
-margin:20px auto;
-filter:drop-shadow(0 15px 30px #dd8fbc55);
-animation:float 3s ease-in-out infinite;
+.stage {
+  width:min(100%,680px);
+  max-height:100%;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+  scrollbar-color:#d5b99155 transparent;
+  padding:clamp(23px,5vw,42px);
+  border-radius:29px;
+  border:1px solid var(--border);
+  background:linear-gradient(145deg,#2b2b48e8,#191e34f4);
+  box-shadow:0 25px 80px #0006,inset 0 1px #ffffff17;
+  text-align:center;
+  animation:enter .55s ease both;
 }
-@keyframes float{
-50%{transform:translateY(-13px) rotate(3deg)}
+@keyframes enter {
+  from { opacity:0; transform:translateY(20px) scale(.98); }
+  to { opacity:1; transform:translateY(0) scale(1); }
 }
-.open-title{font-size:clamp(35px,8vw,52px)}
-.notice{
-display:inline-block;
-border:1px solid #f4d6a244;
-border-radius:20px;
-padding:9px 15px;color:var(--rose);
-font-size:12px;margin-bottom:15px;
+.eyebrow {
+  font-size:10px;
+  font-weight:750;
+  color:var(--gold);
+  letter-spacing:2.3px;
+  text-transform:uppercase;
 }
-#site{animation:rise 1s ease both}
-.hero{
-min-height:100svh;
-display:flex;flex-direction:column;justify-content:center;
-align-items:center;
+h1,h2,h3 {
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:400;
+  line-height:1.17;
 }
-.hero-flower{
-font-size:110px;
-filter:drop-shadow(0 10px 30px #e39cba55);
-animation:float 4s infinite;
+h1 {
+  margin:14px 0 8px;
+  font-size:clamp(42px,9vw,76px);
+  background:linear-gradient(110deg,#d2a76f,#fff0cb,#d9ad73);
+  background-size:200% auto;
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  animation:gold 5s linear infinite;
 }
-.hero-sub{font-family:Georgia,serif;font-size:30px;color:var(--rose)}
-.hero p{max-width:570px}
-.scroll-hint{font-size:12px;color:#b9a8a9;margin-top:35px}
-.cards{
-display:grid;
-grid-template-columns:repeat(2,minmax(0,1fr));
-gap:15px;margin:30px auto;
+@keyframes gold { to { background-position:200% center; } }
+h2 {
+  font-size:clamp(29px,6vw,44px);
+  margin:13px 0 17px;
+  color:var(--gold);
 }
-.fact{
-padding:25px 19px;text-align:left;
-background:linear-gradient(145deg,#2c2946,#1b2035);
-border:1px solid var(--line);border-radius:22px;
-transition:transform .25s;
+h3 { font-size:27px; color:var(--rose); }
+p { line-height:1.78; font-size:15px; color:var(--muted); }
+.big-emoji {
+  display:block;
+  font-size:clamp(75px,16vw,115px);
+  margin:20px 0;
+  filter:drop-shadow(0 12px 24px #e5a0c066);
+  animation:float 3.5s ease-in-out infinite;
 }
-.fact:hover{transform:translateY(-5px)}
-.fact .emoji{font-size:35px}
-.fact strong{display:block;color:var(--gold);margin:13px 0 7px}
-.fact p{font-size:14px;margin:0;line-height:1.7}
-.fact:last-child{grid-column:1/-1;text-align:center}
-.message-panel{padding:35px 20px;margin:30px 0}
-#messageText{
-font-family:Georgia,serif;
-font-size:clamp(24px,5vw,34px);
-line-height:1.55;min-height:140px;
-display:flex;align-items:center;justify-content:center;
+@keyframes float { 50% { transform:translateY(-12px); } }
+.divider {
+  width:80px;height:2px;margin:22px auto;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
 }
-#messageCount{color:var(--rose);font-size:13px;margin-bottom:20px}
-.flower-box{
-width:230px;height:250px;margin:30px auto;
-border:1px solid var(--line);
-border-radius:125px 125px 30px 30px;
-background:radial-gradient(circle,#e9a2c130,transparent 70%);
-display:grid;place-items:center;
+.pink { color:var(--rose); }
+.gold { color:var(--gold); }
+.quote {
+  padding:25px 18px;
+  border-radius:22px;
+  background:#ffffff0a;
+  border:1px solid #ffffff17;
+  margin:20px 0;
 }
-#flowerBtn{
-font-size:120px;background:none;border:0;
-animation:float 3s infinite;
-transition:transform .5s;
+.quote-text {
+  color:var(--white);
+  font:clamp(22px,5vw,31px)/1.5 Georgia,serif;
 }
-#flowerBtn.bloom{animation:none;transform:scale(1.25) rotate(12deg)}
-.reveal{animation:rise .8s ease both}
-.meter{
-height:25px;border-radius:30px;
-background:#ffffff15;border:1px solid var(--line);
-overflow:hidden;margin:25px 0;
+.number {
+  color:var(--rose);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:2px;
 }
-#meterFill{
-width:0;height:100%;
-background:linear-gradient(90deg,#e9a2c1,#f8dba5);
-transition:width .1s linear;
-border-radius:30px;
+.description {
+  font-size:14px;
+  color:var(--muted);
 }
-#percentage{
-font:65px Georgia,serif;
-color:var(--gold);margin-top:25px;
+.meter {
+  width:100%;
+  height:22px;
+  border:1px solid var(--border);
+  background:#ffffff15;
+  border-radius:25px;
+  overflow:hidden;
+  margin:23px 0;
 }
-.final-card{
-padding:45px clamp(20px,5vw,55px);
-background:linear-gradient(140deg,#55345080,#24253e,#5c473966);
+.meter-fill {
+  height:100%;
+  width:0;
+  border-radius:25px;
+  background:linear-gradient(90deg,var(--rose),var(--gold));
 }
-.final-card p{color:#f3e7e7;font-size:17px}
-.heart{font-size:65px;display:block;animation:beat 2s infinite}
-@keyframes beat{50%{transform:scale(1.13)}}
-.signature{font:27px Georgia,serif;color:var(--gold);margin:30px 0}
-.final-btn{margin-top:20px}
-#musicBtn{
-position:fixed;top:16px;right:16px;z-index:30;
-border-radius:50%;width:49px;height:49px;
-border:1px solid var(--line);
-background:#23263eeb;color:var(--gold);
-font-size:20px;box-shadow:0 5px 25px #0006;
+.percent {
+  color:var(--gold);
+  font:64px Georgia,serif;
 }
-.particle{
-position:fixed;z-index:50;pointer-events:none;
-top:-50px;left:var(--left);font-size:25px;
-animation:fall var(--duration) linear forwards;
+.result-lines {
+  color:var(--white);
+  font-size:16px;
+  line-height:2;
 }
-@keyframes fall{
-to{transform:translate(var(--drift),110vh) rotate(600deg);opacity:0}
+.footer-nav {
+  width:min(100%,680px);
+  margin:0 auto;
+  display:flex;
+  gap:10px;
+  padding-top:9px;
 }
-#toast{
-position:fixed;left:50%;bottom:28px;
-transform:translateX(-50%);
-background:#353049;border:1px solid var(--line);
-color:var(--gold);padding:12px 23px;
-border-radius:30px;z-index:40;
-font-size:13px;text-align:center;
-max-width:calc(100% - 30px);
+.btn {
+  border:0;
+  min-height:52px;
+  border-radius:999px;
+  padding:14px 23px;
+  color:#29233a;
+  font-size:14px;
+  font-weight:750;
+  background:linear-gradient(115deg,#ffe6b7,#dbaa76);
+  box-shadow:0 10px 27px #d4a77333;
+  transition:transform .2s;
 }
-footer{padding:35px 16px 50px;text-align:center;font-size:12px;color:#acaabd}
-@media(max-width:580px){
-.cards{grid-template-columns:1fr}
-.fact:last-child{grid-column:auto;text-align:left}
-.section{padding:60px 0}
-.hero{min-height:90svh}
-.open-card{padding:35px 20px}
-.gift{font-size:95px}
-.final-card{padding:35px 22px}
+.btn:active { transform:scale(.97); }
+.btn-outline {
+  background:#ffffff0a;
+  color:var(--gold);
+  border:1px solid var(--border);
+  box-shadow:none;
 }
-@media(prefers-reduced-motion:reduce){
-*,*::before,*::after{
-animation-duration:.01ms!important;
-transition-duration:.01ms!important;
-scroll-behavior:auto!important;
+#backBtn { flex:0 0 auto; }
+#nextBtn { flex:1; }
+#nextBtn:disabled {
+  color:#b8afaa;
+  box-shadow:none;
+  background:#5b5561;
 }
+.flower-gift {
+  font-size:110px;
+  border:0;
+  background:transparent;
+  animation:float 3s infinite;
+}
+.flower-gift.opened {
+  transform:scale(1.2) rotate(10deg);
+  animation:none;
+}
+.final-text { color:#f8eaf0; font-size:16px; }
+.signature {
+  margin:24px 0 12px;
+  font:27px Georgia,serif;
+  color:var(--gold);
+}
+.particle {
+  position:fixed;
+  z-index:50;
+  pointer-events:none;
+  top:-45px;
+  left:var(--left);
+  font-size:25px;
+  animation:fall var(--duration) linear forwards;
+}
+@keyframes fall {
+  to {
+    transform:translate(var(--drift),110vh) rotate(600deg);
+    opacity:0;
+  }
+}
+#toast {
+  position:fixed;
+  z-index:60;
+  bottom:85px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:12px 19px;
+  border-radius:25px;
+  border:1px solid var(--border);
+  color:var(--gold);
+  background:#292b42;
+  text-align:center;
+  font-size:13px;
+  max-width:calc(100% - 30px);
+}
+@media(max-width:500px) {
+  .app { padding:12px 12px max(12px,env(safe-area-inset-bottom)); }
+  .stage { border-radius:23px;padding:24px 19px; }
+  .stage-area { padding:12px 0; }
+  .brand { font-size:9px;letter-spacing:1px; }
+  .big-emoji { margin:15px 0; }
+  h2 { margin:11px 0; }
+  .quote { padding:20px 14px; }
+}
+@media(max-height:620px) {
+  .big-emoji { font-size:65px;margin:10px; }
+  h1 { font-size:40px; }
+  h2 { font-size:29px; }
+  p { line-height:1.5; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
 }
 </style>
 </head>
@@ -252,426 +339,543 @@ scroll-behavior:auto!important;
 <body>
 <div id="stars" aria-hidden="true"></div>
 
-<button id="musicBtn" class="hidden" aria-label="Müziği aç" title="Müzik aç/kapat">🔇</button>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">🌷 TAYYİBE TEYZE • SIGNATURE EDITION</div>
+    <div class="top-actions">
+      <button id="musicBtn" class="icon-btn" aria-label="Müziği aç" title="Müzik aç/kapat">🔇</button>
+    </div>
+  </header>
+
+  <div class="progress-wrap">
+    <div class="progress-info">
+      <span id="stageLabel">Sürpriz Yolculuğu</span>
+      <span id="stageCount">1 / 7</span>
+    </div>
+    <div class="progress">
+      <div id="progressFill"></div>
+    </div>
+  </div>
+
+  <main class="stage-area">
+    <div id="stage" class="stage" aria-live="polite"></div>
+  </main>
+
+  <nav class="footer-nav" aria-label="Sürpriz adımları">
+    <button id="backBtn" class="btn btn-outline">← Geri</button>
+    <button id="nextBtn" class="btn">Sürprizi Aç 🎁</button>
+  </nav>
+</div>
+
 <div id="toast" class="hidden" role="status"></div>
-
-<!-- AÇILIŞ -->
-<div id="opening">
-<div class="glass open-card">
-<div class="kicker">✨ Gizli ve Çok Özel Bir Mesaj ✨</div>
-<button class="gift" id="giftBtn" aria-label="Sürpriz kutusunu aç">🎁</button>
-<div class="notice">🚨 Gülümsemek serbest, surat asmak yasak!</div>
-<h2 class="open-title">Tayyibe Teyze!</h2>
-<p>
-Bu sayfa sıradan biri için hazırlanmadı.
-İş yerinin güler yüzlü, şakacı,
-anlayışlı ve kocaman kalpli insanına
-küçük bir sürprizimiz var!
-</p>
-<p>Acaba kimmiş bu özel insan? 🤭</p>
-<button class="btn" id="openBtn">Sürprizi Aç 🎀</button>
-<p style="font-size:12px">Dikkat: Aşırı tebessüm içerebilir! 😄</p>
-</div>
-</div>
-
-<main id="site" class="hidden">
-
-<!-- GÖRKEMLİ KARŞILAMA -->
-<section class="section hero">
-<div class="kicker">🌷 Bu güzel sayfanın tek yıldızına 🌷</div>
-<div class="hero-flower">💐</div>
-<h1>Tayyibe Teyze</h1>
-<div class="hero-sub">İyi ki Varsın! ❤️</div>
-<div class="divider"></div>
-<p>
-Bazı insanlar vardır, bulundukları ortama
-neşe katar. Bir gülümsemeleri bile insanın
-gününü güzelleştirmeye yeter.
-</p>
-<p style="color:var(--rose)">
-İşte sen tam da o güzel insanlardan birisin.
-</p>
-<button class="btn" id="discoverBtn">Sürprizlere Devam Et ✨</button>
-<div class="scroll-hint">Aşağıda seni bekleyen güzellikler var ↓</div>
-</section>
-
-<!-- BEŞ BİLİMSEL GERÇEK -->
-<section class="section" id="facts">
-<div class="kicker">Gülümseten Araştırmalar Merkezi</div>
-<h2>Tayyibe Teyze Hakkında<br>5 Bilimsel Gerçek 🔬</h2>
-<p>
-Uzun ve tamamen eğlence amaçlı araştırmalarımız sonucunda
-aşağıdaki bulgulara ulaştık. 😄
-</p>
-
-<div class="cards">
-<div class="fact">
-<div class="emoji">😄</div>
-<strong>1. Gülümseme Etkisi</strong>
-<p>Tayyibe teyzenin bir gülümsemesi, ortamdaki neşe seviyesini anında yükseltir.</p>
-</div>
-<div class="fact">
-<div class="emoji">☕</div>
-<strong>2. Kahve Etkisi</strong>
-<p>Onunla iki dakika sohbet etmek, bazen bir fincan kahveden daha iyi gelir.</p>
-</div>
-<div class="fact">
-<div class="emoji">😂</div>
-<strong>3. Şaka Yeteneği</strong>
-<p>En beklenmedik anda yaptığı bir şakayla herkesi güldürme potansiyeline sahiptir.</p>
-</div>
-<div class="fact">
-<div class="emoji">🌷</div>
-<strong>4. Anlayış Seviyesi</strong>
-<p>Anlayış ve hoşgörü kapasitesi o kadar yüksektir ki ölçüm cihazımız zorlandı.</p>
-</div>
-<div class="fact">
-<div class="emoji">❤️</div>
-<strong>5. Kesin Sonuç</strong>
-<p>Bütün araştırmalar aynı sonucu gösteriyor: Tayyibe teyze iyi ki var!</p>
-</div>
-</div>
-<p style="font-size:12px">Not: Bu araştırmanın tek amacı seni gülümsetmek! 🤭</p>
-</section>
-
-<!-- MESAJLAR -->
-<section class="section" id="messages">
-<div class="kicker">Tayyibe Teyze Özel Mesaj Servisi</div>
-<h2>Biraz Gülümseyelim mi? 😄</h2>
-<p>Her dokunuşta sana özel bir mesaj!</p>
-
-<div class="glass message-panel">
-<div id="messageText" aria-live="polite">
-Teyze, hazır mısın? İlk mesaj seni bekliyor! 💌
-</div>
-<div id="messageCount">0 / 12</div>
-<button class="btn" id="messageBtn">Mesajı Göster 💌</button>
-</div>
-</section>
-
-<!-- ÇİÇEK SÜRPRİZİ -->
-<section class="section" id="flowers">
-<div class="kicker">Sana Küçük Bir Hediye</div>
-<h2>Bu Çiçekler Sana! 💐</h2>
-<p>
-Gerçek çiçekler zamanla solar.
-Ama güzel kalpli insanların bıraktığı
-güzel izler hep hatırlanır.
-</p>
-
-<div class="flower-box">
-<button id="flowerBtn" aria-label="Çiçekleri aç">💐</button>
-</div>
-<p>Çiçeklere bir dokun bakalım! 🌸</p>
-
-<div id="flowerReveal" class="hidden reveal glass" style="padding:25px">
-<h3>Güzel Kalpli Tayyibe Teyzeme 🌷</h3>
-<p>
-Bu çiçekler; içten gülüşün,
-güzel şakaların, anlayışın ve
-samimiyetin için küçük bir teşekkür.
-</p>
-<p style="color:var(--rose)">Kocaman bir buket de senin güzel kalbine! ❤️</p>
-</div>
-</section>
-
-<!-- MUTLULUK ÖLÇER -->
-<section class="section" id="happiness">
-<div class="kicker">Tayyibe Teyze Özel Test Merkezi</div>
-<h2>Mutluluk Ölçer 📊</h2>
-<p>
-Bilimsel(!) cihazımızı hazırladık.
-Bakalım Tayyibe teyzenin neşe seviyesi kaç çıkacak?
-</p>
-<div id="percentage">0%</div>
-<div class="meter"><div id="meterFill"></div></div>
-<button class="btn" id="measureBtn">Ölçümü Başlat 🔍</button>
-
-<div id="measureReveal" class="hidden reveal" style="padding-top:25px">
-<h2>SONUÇ: MÜKEMMEL! 🎉</h2>
-<p>
-%100 güler yüz<br>
-%100 anlayış<br>
-%100 şaka yeteneği<br>
-%100 güzel kalp
-</p>
-<h3>⚠️ Sistem Hatası!</h3>
-<p>
-Bu kadar güzel kalplilik cihazın kapasitesini aştı.
-Teknik ekip hâlâ şaşkın! 😂
-</p>
-</div>
-</section>
-
-<!-- DUYGUSAL FİNAL -->
-<section class="section" id="final">
-<div class="glass final-card">
-<div class="kicker">Ve Şimdi Kalpten Gelen Birkaç Söz</div>
-<span class="heart">❤️</span>
-<h2>İyi ki Varsın,<br>Tayyibe Teyze</h2>
-<div class="divider"></div>
-
-<p>
-Hayatta bazı insanlar vardır.
-Onlarla tanışmak insana kendini şanslı hissettirir.
-Çünkü güzel kalpleriyle, samimiyetleriyle
-ve küçücük bir tebessümleriyle
-insanın gününü güzelleştirirler.
-</p>
-<p>
-Sen de benim için böyle insanlardan birisin.
-Şakalarınla güldüren, anlayışınla
-insana iyi gelen, güler yüzüyle
-bulunduğu yeri güzelleştiren birisin.
-</p>
-<p>
-Sana “teyze” demem sadece bir hitap değil.
-İçinde sevgi, saygı ve içtenlik var.
-</p>
-<p>
-Dilerim yüzündeki o güzel gülümseme
-hiç eksik olmasın. Hayat da sana
-kalbinin güzelliği kadar güzel
-sürprizler getirsin.
-</p>
-
-<div class="signature">İyi ki tanımışım seni. 🌷</div>
-<p style="color:var(--rose)">
-Hep böyle güzel gül, olur mu teyze? 😊
-</p>
-
-<button class="btn final-btn" id="finalBtn">
-Son Bir Sürpriz 🎉
-</button>
-</div>
-</section>
-
-<footer>
-Sevgi, saygı ve kocaman bir tebessümle hazırlandı. 🌷<br>
-Tayyibe Teyze'ye Özel ❤️
-</footer>
-</main>
 
 <script>
 "use strict";
 
 const $ = id => document.getElementById(id);
-const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function scrollToSection(id){
-$(id).scrollIntoView({behavior:reduced?"auto":"smooth"});
+const facts = [
+  {
+    emoji:"😄",
+    title:"1. Gülümseme Etkisi",
+    text:"Tayyibe teyzenin gülümsemesi, bulunduğu ortamın neşe seviyesini anında artırır. Bu etki karşısında bilim insanları hâlâ şaşkın!"
+  },
+  {
+    emoji:"☕",
+    title:"2. Kahve Etkisi",
+    text:"Onunla iki dakika sohbet etmek, bazen bir fincan kahveden daha iyi gelir. Üstelik şekersiz bile tatlıdır!"
+  },
+  {
+    emoji:"😂",
+    title:"3. Şaka Yeteneği",
+    text:"En beklenmedik anda yaptığı bir şakayla herkesi güldürebilir. Şaka radarı sürekli çalışmaktadır!"
+  },
+  {
+    emoji:"🌷",
+    title:"4. Anlayış Seviyesi",
+    text:"Sabrı, anlayışı ve güzel kalbi ölçülmek istendi. Ölçüm cihazı 'Maşallah!' diyerek çalışmayı durdurdu."
+  },
+  {
+    emoji:"❤️",
+    title:"5. Kesin Sonuç",
+    text:"Bütün araştırmalar tek bir sonucu gösteriyor: Tayyibe teyze, iyi ki varsın! Hem de çok iyi ki!"
+  }
+];
+
+const messages = [
+  "İş yerinin neşe kaynağı tespit edildi: TAYYİBE TEYZE! 😂",
+  "Gülüşün bulaşıcı... İyi ki bunun karantinası yok! 🌸",
+  "Teyze dedik ama kalbimizde VIP yer verdik! ❤️",
+  "Senin olduğun yerde moral bozukluğu fazla mesai yapamaz! 😄",
+  "Anlayış bol, şaka bol, güzel kalp zaten sınırsız! 💐",
+  "Seninle iki dakika sohbet bazen bir fincan kahveden iyi gelir! ☕",
+  "Tayyibe teyzenin yanında surat asmak gönülden yasak! 😂",
+  "Bu kadar güler yüzlü olmak için özel eğitim mi aldın teyze? 😎",
+  "Senin güzel kalbine kocaman bir maşallah! 🧿",
+  "Bir insan hem bu kadar şakacı hem de bu kadar anlayışlı olur mu? Oluyormuş! 🌷",
+  "İyi ki varsın teyze! Hep gül ki dünya biraz daha güzelleşsin. 💖",
+  "Bu sayfanın en güzel şeyi ne biliyor musun? Onu okuyan sensin! 🌸"
+];
+
+const titles = [
+  "Gizemli Açılış",
+  "Güzel Bir Karşılama",
+  "5 Bilimsel Gerçek",
+  "Tebessüm Mesajları",
+  "Çiçek Sürprizi",
+  "Mutluluk Ölçer",
+  "Kalpten Gelen Final"
+];
+
+const state = {
+  stage:0,
+  fact:0,
+  message:0,
+  flowerOpened:false,
+  measured:false,
+  measuring:false,
+  finalCelebrated:false
+};
+
+function celebrate(count=35, icons=["🌷","🌸","✨","💖","🎉"]) {
+  if(reduced) return;
+  for(let i=0;i<Math.min(count,80);i++) {
+    const el=document.createElement("span");
+    el.className="particle";
+    el.textContent=icons[Math.floor(Math.random()*icons.length)];
+    el.style.setProperty("--left",Math.random()*100+"vw");
+    el.style.setProperty("--drift",(Math.random()*180-90)+"px");
+    el.style.setProperty("--duration",(3+Math.random()*3)+"s");
+    el.style.animationDelay=Math.random()*1+"s";
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),7500);
+  }
 }
+
+let toastTimer;
+function toast(text) {
+  const el=$("toast");
+  el.textContent=text;
+  el.classList.remove("hidden");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.add("hidden"),2600);
+}
+
+function render() {
+  const stage=$("stage");
+  stage.style.animation="none";
+  void stage.offsetWidth;
+  stage.style.animation="";
+
+  $("stageLabel").textContent=titles[state.stage];
+  $("stageCount").textContent=(state.stage+1)+" / 7";
+  $("progressFill").style.width=((state.stage+1)/7*100)+"%";
+
+  $("backBtn").disabled=state.stage===0 || state.measuring;
+
+  let html="";
+  let nextLabel="Devam Et →";
+  let disabled=false;
+
+  if(state.stage===0) {
+    html=`
+      <div class="eyebrow">✨ Çok Özel Bir Mesaj ✨</div>
+      <div class="big-emoji">🎁</div>
+      <h2>Bir Dakika Tayyibe Teyze!</h2>
+      <p>
+        Önemli bir duyurumuz var! 🚨<br>
+        İş yerinin güler yüzlü, şakacı,
+        anlayışlı ve kocaman kalpli insanına
+        özel bir sürpriz hazırlandı.
+      </p>
+      <div class="quote">
+        <div class="quote-text">
+          Hazır mısın bakalım teyze? 🤭
+        </div>
+      </div>
+      <p class="pink">Uyarı: Aşırı tebessüm içerebilir!</p>
+    `;
+    nextLabel="Sürprizi Aç 🎁";
+  }
+
+  if(state.stage===1) {
+    html=`
+      <div class="eyebrow">🌷 Sana Özel Hazırlandı 🌷</div>
+      <span class="big-emoji">💐</span>
+      <h1>Tayyibe Teyze</h1>
+      <h3>İyi ki Varsın!</h3>
+      <div class="divider"></div>
+      <p>
+        Bazı insanlar vardır, bulundukları yeri
+        güzelleştirir. Bir gülümsemeleriyle
+        neşe, samimiyetleriyle huzur verirler.
+      </p>
+      <p class="pink">
+        İşte sen tam da o güzel insanlardan birisin. ❤️
+      </p>
+    `;
+    nextLabel="Bakalım Neler Var? 👀";
+  }
+
+  if(state.stage===2) {
+    const fact=facts[state.fact];
+    html=`
+      <div class="eyebrow">Gülümseten Araştırmalar Merkezi</div>
+      <h2>5 Bilimsel Gerçek 🔬</h2>
+      <p class="description">
+        Tamamen eğlence amaçlı araştırmalarımızın sonuçları!
+      </p>
+      <div class="quote">
+        <span class="big-emoji">${fact.emoji}</span>
+        <div class="number">ARAŞTIRMA ${state.fact+1} / 5</div>
+        <h3>${fact.title}</h3>
+        <p>${fact.text}</p>
+      </div>
+      <p class="pink">Bilim dünyası bu teyzenin peşinde! 😄</p>
+    `;
+    nextLabel=state.fact===4?"Mesajlara Geç 💌":"Sıradaki Gerçek →";
+  }
+
+  if(state.stage===3) {
+    html=`
+      <div class="eyebrow">Tayyibe Teyze Özel Mesaj Servisi</div>
+      <h2>Biraz Gülümseyelim mi? 😄</h2>
+      <p>Her butonda sana özel yeni bir mesaj.</p>
+      <div class="quote">
+        <div class="number">MESAJ ${state.message+1} / ${messages.length}</div>
+        <div class="quote-text" style="margin-top:24px">
+          ${messages[state.message]}
+        </div>
+      </div>
+      <p class="pink">
+        Bunları okurken gülümsüyorsan görev başarıyla tamamlanıyor! 🌸
+      </p>
+    `;
+    nextLabel=state.message===messages.length-1
+      ?"Çiçek Sürprizine Geç 💐"
+      :"Sonraki Mesaj 💌";
+  }
+
+  if(state.stage===4) {
+    html=`
+      <div class="eyebrow">Küçük Bir Hediye</div>
+      <h2>Bu Çiçekler Sana! 💐</h2>
+      <p>
+        Gerçek çiçekler solar ama
+        güzel insanların kalbimizde bıraktığı
+        izler hep yaşar.
+      </p>
+      <button id="flowerBtn" class="flower-gift ${state.flowerOpened?"opened":""}"
+        aria-label="Çiçek sürprizini aç">💐</button>
+      ${
+        state.flowerOpened
+        ? `<div class="quote">
+            <h3>Güzel Kalpli Teyzeme 🌷</h3>
+            <p>
+              Bu çiçekler, güler yüzün,
+              güzel şakaların, anlayışın ve
+              samimiyetin için küçük bir teşekkür.
+            </p>
+            <p class="pink">İyi ki seni tanımışım! ❤️</p>
+          </div>`
+        : `<p class="pink">Çiçeklere dokun, küçük bir sürpriz var! 🌸</p>`
+      }
+    `;
+    disabled=!state.flowerOpened;
+    nextLabel="Mutluluk Testine Geç 💖";
+  }
+
+  if(state.stage===5) {
+    html=`
+      <div class="eyebrow">Tayyibe Teyze Özel Test Merkezi</div>
+      <h2>Mutluluk Ölçer 📊</h2>
+      <p>
+        Bakalım güzel kalp ve neşe seviyen
+        kaç çıkacak teyze?
+      </p>
+      <div class="percent" id="percentage">
+        ${state.measured?"100%":"0%"}
+      </div>
+      <div class="meter">
+        <div class="meter-fill" id="meterFill"
+          style="width:${state.measured?100:0}%"></div>
+      </div>
+      ${
+        state.measured
+        ? `<div class="quote">
+            <h3>SONUÇ: MÜKEMMEL! 🎉</h3>
+            <div class="result-lines">
+              %100 Güler Yüz<br>
+              %100 Anlayış<br>
+              %100 Şaka Yeteneği<br>
+              %100 Güzel Kalp
+            </div>
+            <p class="pink">
+              ⚠️ Bu kadar güzel kalplilik cihazın
+              kapasitesini aştı. Teknik ekip şaşkın! 😂
+            </p>
+          </div>`
+        : `<button class="btn btn-outline" id="measureBtn"
+             style="margin-top:15px">
+             Ölçümü Başlat 🔍
+           </button>`
+      }
+    `;
+    disabled=!state.measured;
+    nextLabel="Son Mesajı Oku ❤️";
+  }
+
+  if(state.stage===6) {
+    html=`
+      <div class="eyebrow">Kalpten Gelen Birkaç Söz</div>
+      <span class="big-emoji">❤️</span>
+      <h2>İyi ki Varsın,<br>Tayyibe Teyze</h2>
+      <div class="divider"></div>
+
+      <p class="final-text">
+        Hayatta bazı insanlar vardır.
+        Onlarla tanışmak insana kendini
+        şanslı hissettirir.
+      </p>
+      <p class="final-text">
+        Sen de benim için böyle birisin.
+        Şakalarınla güldüren, anlayışınla
+        insana iyi gelen, güler yüzünle
+        bulunduğun yeri güzelleştiren
+        güzel kalpli bir insansın.
+      </p>
+      <p class="final-text">
+        Sana “teyze” demem sadece bir hitap değil.
+        İçinde sevgi, saygı ve samimiyet var.
+      </p>
+      <p class="final-text">
+        Dilerim yüzündeki güzel gülümseme
+        hiç eksik olmasın.
+        Hayat sana, senin insanlara kattığın
+        güzellikleri getirsin.
+      </p>
+
+      <div class="signature">İyi ki tanımışım seni. 🌷</div>
+      <p class="pink">Hep böyle güzel gül, olur mu teyze? 😊</p>
+    `;
+    nextLabel=state.finalCelebrated
+      ?"Sürprizi Baştan İzle 🔄"
+      :"Son Bir Sürpriz 🎉";
+  }
+
+  stage.innerHTML=html;
+  stage.scrollTop=0;
+
+  $("nextBtn").textContent=nextLabel;
+  $("nextBtn").disabled=disabled || state.measuring;
+
+  const flowerBtn=$("flowerBtn");
+  if(flowerBtn)flowerBtn.addEventListener("click",openFlower);
+
+  const measureBtn=$("measureBtn");
+  if(measureBtn)measureBtn.addEventListener("click",measure);
+}
+
+function next() {
+  if(state.measuring)return;
+
+  if(state.stage===2 && state.fact<facts.length-1) {
+    state.fact++;
+    render();
+    return;
+  }
+  if(state.stage===3 && state.message<messages.length-1) {
+    state.message++;
+    render();
+    return;
+  }
+  if(state.stage===4 && !state.flowerOpened)return;
+  if(state.stage===5 && !state.measured)return;
+
+  if(state.stage===6) {
+    if(!state.finalCelebrated) {
+      state.finalCelebrated=true;
+      celebrate(80,["🌷","💖","🌸","✨","🎉","❤️"]);
+      toast("İyi ki varsın Tayyibe Teyze! ❤️");
+      render();
+    } else {
+      resetStory();
+    }
+    return;
+  }
+
+  state.stage++;
+  render();
+
+  if(state.stage===1)celebrate(40);
+  if(state.stage===6)celebrate(35);
+}
+
+function back() {
+  if(state.measuring)return;
+
+  if(state.stage===2 && state.fact>0) {
+    state.fact--;
+  } else if(state.stage===3 && state.message>0) {
+    state.message--;
+  } else if(state.stage>0) {
+    state.stage--;
+  }
+  render();
+}
+
+function openFlower() {
+  if(!state.flowerOpened) {
+    state.flowerOpened=true;
+    celebrate(45,["🌷","🌸","💗","🌼","✨"]);
+    render();
+    toast("Bu çiçekler güzel kalpli teyzemize! 💐");
+  }
+}
+
+function measure() {
+  if(state.measuring || state.measured)return;
+
+  state.measuring=true;
+  $("nextBtn").disabled=true;
+  $("backBtn").disabled=true;
+  $("measureBtn").disabled=true;
+  $("measureBtn").textContent="Ölçülüyor...";
+
+  const duration=reduced?0:2100;
+  const start=performance.now();
+
+  function frame(now) {
+    const ratio=duration===0?1:Math.min((now-start)/duration,1);
+    const value=Math.round((1-Math.pow(1-ratio,3))*100);
+
+    $("percentage").textContent=value+"%";
+    $("meterFill").style.width=value+"%";
+
+    if(ratio<1)requestAnimationFrame(frame);
+    else {
+      state.measuring=false;
+      state.measured=true;
+      render();
+      celebrate(55);
+      toast("Ölçüm tamamlandı: EŞSİZ! 🎉");
+    }
+  }
+  requestAnimationFrame(frame);
+}
+
+function resetStory() {
+  state.stage=0;
+  state.fact=0;
+  state.message=0;
+  state.flowerOpened=false;
+  state.measured=false;
+  state.measuring=false;
+  state.finalCelebrated=false;
+  render();
+}
+
+$("nextBtn").addEventListener("click",next);
+$("backBtn").addEventListener("click",back);
 
 // Yıldızlı arka plan
-if(!reduced){
-const stars=$("stars");
-for(let i=0;i<65;i++){
-const s=document.createElement("span");
-s.className="star";
-s.style.left=Math.random()*100+"%";
-s.style.top=Math.random()*100+"%";
-s.style.animationDelay=Math.random()*4+"s";
-stars.appendChild(s);
-}
-}
-
-// Bildirim
-let toastTimeout;
-function toast(message){
-const el=$("toast");
-el.textContent=message;
-el.classList.remove("hidden");
-clearTimeout(toastTimeout);
-toastTimeout=setTimeout(()=>el.classList.add("hidden"),3200);
+if(!reduced) {
+  for(let i=0;i<60;i++) {
+    const star=document.createElement("span");
+    star.className="star";
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+    star.style.animationDelay=Math.random()*4+"s";
+    $("stars").appendChild(star);
+  }
 }
 
-// Çiçek ve konfeti
-function celebrate(count=35,icons=["🌸","🌷","✨","💗","🎉"]){
-if(reduced)return;
-for(let i=0;i<Math.min(count,80);i++){
-const item=document.createElement("span");
-item.className="particle";
-item.textContent=icons[Math.floor(Math.random()*icons.length)];
-item.style.setProperty("--left",Math.random()*100+"vw");
-item.style.setProperty("--drift",(Math.random()*160-80)+"px");
-item.style.setProperty("--duration",(3+Math.random()*3)+"s");
-item.style.animationDelay=Math.random()*1.1+"s";
-document.body.appendChild(item);
-setTimeout(()=>item.remove(),7500);
-}
-}
-
-// Açılış
-function openSurprise(){
-$("opening").classList.add("hidden");
-$("site").classList.remove("hidden");
-$("musicBtn").classList.remove("hidden");
-window.scrollTo(0,0);
-celebrate(55);
-toast("Sürprizine hoş geldin Tayyibe Teyze! 🌷");
-}
-$("giftBtn").addEventListener("click",openSurprise);
-$("openBtn").addEventListener("click",openSurprise);
-$("discoverBtn").addEventListener("click",()=>scrollToSection("facts"));
-
-// Mesaj sistemi
-const messages=[
-"İş yerinin neşe kaynağı tespit edildi: TAYYİBE TEYZE! 😂",
-"Gülüşün bulaşıcı... İyi ki bunun karantinası yok! 🌸",
-"Teyze dedik ama kalbimizde VIP yer verdik! ❤️",
-"Senin olduğun yerde moral bozukluğu fazla mesai yapamaz! 😄",
-"Anlayış bol, şaka bol, güzel kalp zaten sınırsız! 💐",
-"Seninle iki dakika sohbet, bazen bir fincan kahveden iyi gelir! ☕",
-"Tayyibe teyzenin yanında surat asmak kanunen değil ama gönülden yasak! 😂",
-"Bu kadar güler yüzlü olmak için özel eğitim mi aldın teyze? 😎",
-"Senin güzel kalbine kocaman bir maşallah! 🧿",
-"Şaka bir yana, iyi ki hayatımızda senin gibi güzel insanlar var. 🌷",
-"İyi ki varsın teyze! Hep gül ki dünya biraz daha güzelleşsin. 💖",
-"Son mesaj: Bu sayfanın en güzel şeyi ne biliyor musun? Onu okuyan sensin! 🌸"
-];
-let messageIndex=0;
-$("messageBtn").addEventListener("click",()=>{
-const current=messageIndex%messages.length;
-$("messageText").textContent=messages[current];
-$("messageCount").textContent=(current+1)+" / "+messages.length;
-messageIndex++;
-$("messageBtn").textContent="Bir Sonraki Mesaj 💌";
-if(current===messages.length-1){
-$("messageBtn").textContent="Mesajları Tekrar Oku 🔄";
-celebrate(30);
-}
-});
-
-// Çiçek
-$("flowerBtn").addEventListener("click",()=>{
-$("flowerBtn").classList.add("bloom");
-$("flowerReveal").classList.remove("hidden");
-celebrate(40,["🌷","🌸","🌼","💗","✨"]);
-toast("Bu çiçekler sana, güzel kalpli teyze! 💐");
-});
-
-// Mutluluk ölçümü
-let measuring=false;
-$("measureBtn").addEventListener("click",()=>{
-if(measuring)return;
-if(!$("measureReveal").classList.contains("hidden")){
-celebrate(40);
-return;
-}
-measuring=true;
-$("measureBtn").disabled=true;
-$("measureBtn").textContent="Ölçülüyor...";
-const duration=reduced?0:2300;
-const start=performance.now();
-
-function frame(now){
-const ratio=duration===0?1:Math.min((now-start)/duration,1);
-const value=Math.round((1-Math.pow(1-ratio,3))*100);
-$("percentage").textContent=value+"%";
-$("meterFill").style.width=value+"%";
-if(ratio<1){
-requestAnimationFrame(frame);
-}else{
-$("percentage").textContent="100%";
-$("meterFill").style.width="100%";
-$("measureReveal").classList.remove("hidden");
-$("measureBtn").textContent="Yeniden Kutla 🎉";
-$("measureBtn").disabled=false;
-measuring=false;
-celebrate(55);
-}
-}
-requestAnimationFrame(frame);
-});
-
-// Final
-$("finalBtn").addEventListener("click",()=>{
-celebrate(80,["🌷","💖","🎉","✨","🌸","❤️"]);
-toast("İyi ki varsın Tayyibe Teyze! ❤️");
-$("finalBtn").textContent="Kocaman Gülümse! 😊";
-});
-
-// Hafif, sözsüz tarayıcı melodisi
+// İsteğe bağlı hafif melodik ses
 let audioContext=null;
 let musicOn=false;
-let musicTimer=null;
-let noteIndex=0;
-
+let timer=null;
+let note=0;
 const melody=[
-261.63,329.63,392,523.25,
-493.88,392,329.63,293.66,
-261.63,329.63,440,392,
-349.23,329.63,293.66,261.63
+  261.63,329.63,392,523.25,
+  493.88,392,329.63,293.66,
+  261.63,329.63,440,392,
+  349.23,329.63,293.66,261.63
 ];
 
-function playNote(freq){
-if(!audioContext||audioContext.state!=="running")return;
-const now=audioContext.currentTime;
-const osc=audioContext.createOscillator();
-const gain=audioContext.createGain();
-osc.type="sine";
-osc.frequency.setValueAtTime(freq,now);
-gain.gain.setValueAtTime(.0001,now);
-gain.gain.exponentialRampToValueAtTime(.055,now+.045);
-gain.gain.exponentialRampToValueAtTime(.0001,now+.85);
-osc.connect(gain);
-gain.connect(audioContext.destination);
-osc.start(now);
-osc.stop(now+.9);
+function playNote(freq) {
+  if(!audioContext || audioContext.state!=="running")return;
+
+  const now=audioContext.currentTime;
+  const oscillator=audioContext.createOscillator();
+  const gain=audioContext.createGain();
+
+  oscillator.type="sine";
+  oscillator.frequency.value=freq;
+
+  gain.gain.setValueAtTime(.0001,now);
+  gain.gain.exponentialRampToValueAtTime(.045,now+.05);
+  gain.gain.exponentialRampToValueAtTime(.0001,now+.9);
+
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+  oscillator.start(now);
+  oscillator.stop(now+.95);
 }
 
-function startNotes(){
-clearInterval(musicTimer);
-playNote(melody[noteIndex++%melody.length]);
-musicTimer=setInterval(()=>{
-playNote(melody[noteIndex++%melody.length]);
-},680);
+function startMusic() {
+  clearInterval(timer);
+  playNote(melody[note++%melody.length]);
+  timer=setInterval(()=>{
+    playNote(melody[note++%melody.length]);
+  },720);
 }
 
 $("musicBtn").addEventListener("click",async()=>{
-try{
-if(!musicOn){
-const AudioClass=window.AudioContext||window.webkitAudioContext;
-if(!AudioClass){
-toast("Bu tarayıcı müziği desteklemiyor.");
-return;
-}
-if(!audioContext||audioContext.state==="closed"){
-audioContext=new AudioClass();
-}
-await audioContext.resume();
-musicOn=true;
-$("musicBtn").textContent="🎵";
-$("musicBtn").setAttribute("aria-label","Müziği kapat");
-startNotes();
-toast("Müzik açıldı 🎵");
-}else{
-musicOn=false;
-clearInterval(musicTimer);
-musicTimer=null;
-if(audioContext.state==="running")await audioContext.suspend();
-$("musicBtn").textContent="🔇";
-$("musicBtn").setAttribute("aria-label","Müziği aç");
-toast("Müzik kapatıldı 🔇");
-}
-}catch(error){
-console.warn("Ses hatası:",error);
-toast("Müzik başlatılamadı.");
-}
+  try {
+    if(!musicOn) {
+      const AudioClass=window.AudioContext||window.webkitAudioContext;
+      if(!AudioClass) {
+        toast("Tarayıcı ses özelliğini desteklemiyor.");
+        return;
+      }
+      if(!audioContext || audioContext.state==="closed")
+        audioContext=new AudioClass();
+
+      await audioContext.resume();
+      musicOn=true;
+      $("musicBtn").textContent="🎵";
+      $("musicBtn").setAttribute("aria-label","Müziği kapat");
+      startMusic();
+    } else {
+      musicOn=false;
+      clearInterval(timer);
+      timer=null;
+      if(audioContext && audioContext.state==="running")
+        await audioContext.suspend();
+      $("musicBtn").textContent="🔇";
+      $("musicBtn").setAttribute("aria-label","Müziği aç");
+    }
+  } catch(e) {
+    console.warn(e);
+    toast("Müzik başlatılamadı.");
+  }
 });
 
 document.addEventListener("visibilitychange",()=>{
-if(!audioContext||!musicOn)return;
-if(document.hidden){
-clearInterval(musicTimer);
-musicTimer=null;
-audioContext.suspend();
-}else{
-audioContext.resume().then(()=>{
-if(musicOn)startNotes();
-}).catch(()=>{});
-}
+  if(!musicOn || !audioContext)return;
+  if(document.hidden) {
+    clearInterval(timer);
+    timer=null;
+    audioContext.suspend();
+  } else {
+    audioContext.resume().then(()=>{
+      if(musicOn)startMusic();
+    }).catch(()=>{});
+  }
 });
+
+render();
 </script>
 </body>
 </html>
