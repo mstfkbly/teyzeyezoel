@@ -3,15 +3,15 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#111528">
-<meta name="description" content="Tayyibe Teyze'ye sevgi ve tebessüm dolu özel bir sürpriz.">
+<meta name="description" content="Tayyibe Teyze'ye özel, sevgi ve tebessüm dolu bir sürpriz.">
 <title>Tayyibe Teyze | İyi ki Varsın 🌷</title>
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23111528'/%3E%3Ctext x='32' y='46' font-size='43' text-anchor='middle'%3E%F0%9F%8C%B7%3C/text%3E%3C/svg%3E">
 
 <style>
-:root {
+:root{
   --bg:#111528;
   --panel:#22263e;
   --gold:#f1d0a0;
@@ -20,29 +20,56 @@
   --muted:#ccc7d6;
   --border:rgba(241,208,160,.22);
 }
-* { box-sizing:border-box; }
-html,body { margin:0; width:100%; min-height:100%; }
-body {
-  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+
+*{box-sizing:border-box}
+
+html{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
   color:var(--white);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
   background:
     radial-gradient(ellipse at 20% 10%,#58395666,transparent 45%),
     radial-gradient(ellipse at 85% 90%,#60452b55,transparent 48%),
     var(--bg);
-  overflow:hidden;
 }
-button { font:inherit; cursor:pointer; }
-button:focus-visible { outline:3px solid var(--rose); outline-offset:4px; }
-button:disabled { opacity:.5; cursor:not-allowed; }
-.hidden { display:none!important; }
 
-#stars {
+button{
+  font:inherit;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+
+button:focus-visible{
+  outline:3px solid var(--rose);
+  outline-offset:3px;
+}
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.hidden{display:none!important}
+
+#stars{
   position:fixed;
   inset:0;
+  z-index:0;
   pointer-events:none;
   overflow:hidden;
 }
-.star {
+
+.star{
   position:absolute;
   width:2px;
   height:2px;
@@ -51,113 +78,155 @@ button:disabled { opacity:.5; cursor:not-allowed; }
   opacity:.3;
   animation:twinkle 3s infinite alternate;
 }
-@keyframes twinkle {
-  to { opacity:.95; transform:scale(1.8); }
+
+@keyframes twinkle{
+  to{opacity:.95;transform:scale(1.8)}
 }
 
-.app {
-  position:relative;
+/* MOBİL DÜZENİN TEMELİ:
+   Üst başlık ve alt butonlar sabit,
+   yalnızca orta alan kaydırılabilir. */
+.app{
+  position:fixed;
+  inset:0;
   z-index:1;
+  display:grid;
+  grid-template-rows:auto auto minmax(0,1fr) auto;
   width:100%;
-  min-height:100vh;
-  min-height:100dvh;
-  display:flex;
-  flex-direction:column;
-  padding:15px max(15px,env(safe-area-inset-right)) max(15px,env(safe-area-inset-bottom)) max(15px,env(safe-area-inset-left));
+  height:100%;
+  height:100dvh;
+  overflow:hidden;
+  padding:
+    max(10px,env(safe-area-inset-top))
+    max(12px,env(safe-area-inset-right))
+    max(12px,env(safe-area-inset-bottom))
+    max(12px,env(safe-area-inset-left));
 }
 
-.topbar {
+.topbar{
   width:min(100%,680px);
   margin:0 auto;
+  min-height:47px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:12px;
-  padding:7px 2px 12px;
+  gap:8px;
+  padding-bottom:8px;
 }
-.brand {
+
+.brand{
   color:var(--gold);
   font-size:10px;
-  letter-spacing:1.8px;
-  font-weight:700;
-}
-.top-actions { display:flex; gap:7px; }
-.icon-btn {
-  border:1px solid var(--border);
-  color:var(--gold);
-  background:#ffffff0c;
-  border-radius:50%;
-  width:42px;
-  height:42px;
-  flex-shrink:0;
-}
-.progress-wrap {
-  width:min(100%,680px);
-  margin:0 auto;
-}
-.progress-info {
-  display:flex;
-  justify-content:space-between;
-  color:var(--muted);
-  font-size:11px;
-  margin-bottom:9px;
-}
-.progress {
-  height:5px;
-  border-radius:20px;
-  overflow:hidden;
-  background:#ffffff20;
-}
-#progressFill {
-  height:100%;
-  width:14.285%;
-  background:linear-gradient(90deg,var(--rose),var(--gold));
-  border-radius:20px;
-  transition:width .5s ease;
+  letter-spacing:1.3px;
+  font-weight:750;
+  line-height:1.4;
 }
 
-.stage-area {
+.icon-btn{
+  flex-shrink:0;
+  width:41px;
+  height:41px;
+  border:1px solid var(--border);
+  border-radius:50%;
+  background:#25283f;
+  color:var(--gold);
+  font-size:19px;
+}
+
+.progress-wrap{
+  width:min(100%,680px);
+  margin:0 auto;
+  padding-bottom:8px;
+}
+
+.progress-info{
   display:flex;
-  flex:1;
-  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  color:var(--muted);
+  font-size:11px;
+  padding-bottom:7px;
+}
+
+.progress{
+  height:5px;
+  background:#ffffff20;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+#progressFill{
+  width:14.285%;
+  height:100%;
+  border-radius:20px;
+  background:linear-gradient(90deg,var(--rose),var(--gold));
+  transition:width .4s ease;
+}
+
+/* Kart yalnızca mevcut boşluğu kaplar */
+.stage-area{
+  display:flex;
+  align-items:stretch;
   justify-content:center;
   min-height:0;
-  padding:16px 0;
+  overflow:hidden;
+  padding:10px 0;
 }
-.stage {
+
+.stage{
   width:min(100%,680px);
-  max-height:100%;
+  height:100%;
+  min-height:0;
   overflow-y:auto;
+  overflow-x:hidden;
   overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
   scrollbar-width:thin;
   scrollbar-color:#d5b99155 transparent;
-  padding:clamp(23px,5vw,42px);
-  border-radius:29px;
+  padding:clamp(22px,5vw,42px);
+  border-radius:25px;
   border:1px solid var(--border);
-  background:linear-gradient(145deg,#2b2b48e8,#191e34f4);
-  box-shadow:0 25px 80px #0006,inset 0 1px #ffffff17;
+  background:linear-gradient(145deg,#2b2b48ed,#191e34f5);
+  box-shadow:0 18px 65px #0005,inset 0 1px #ffffff15;
   text-align:center;
-  animation:enter .55s ease both;
+  animation:enter .45s ease both;
 }
-@keyframes enter {
-  from { opacity:0; transform:translateY(20px) scale(.98); }
-  to { opacity:1; transform:translateY(0) scale(1); }
+
+.stage-content{
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
-.eyebrow {
+
+.stage-content > *{
+  max-width:100%;
+  flex-shrink:0;
+}
+
+@keyframes enter{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.eyebrow{
   font-size:10px;
   font-weight:750;
   color:var(--gold);
-  letter-spacing:2.3px;
+  letter-spacing:2px;
   text-transform:uppercase;
 }
-h1,h2,h3 {
+
+h1,h2,h3{
   font-family:Georgia,"Times New Roman",serif;
   font-weight:400;
-  line-height:1.17;
+  line-height:1.18;
 }
-h1 {
+
+h1{
   margin:14px 0 8px;
-  font-size:clamp(42px,9vw,76px);
+  font-size:clamp(41px,9vw,72px);
   background:linear-gradient(110deg,#d2a76f,#fff0cb,#d9ad73);
   background-size:200% auto;
   color:transparent;
@@ -165,169 +234,255 @@ h1 {
   background-clip:text;
   animation:gold 5s linear infinite;
 }
-@keyframes gold { to { background-position:200% center; } }
-h2 {
-  font-size:clamp(29px,6vw,44px);
-  margin:13px 0 17px;
+
+@keyframes gold{
+  to{background-position:200% center}
+}
+
+h2{
+  margin:12px 0 16px;
+  font-size:clamp(28px,6vw,43px);
   color:var(--gold);
 }
-h3 { font-size:27px; color:var(--rose); }
-p { line-height:1.78; font-size:15px; color:var(--muted); }
-.big-emoji {
+
+h3{
+  font-size:clamp(22px,5vw,28px);
+  color:var(--rose);
+}
+
+p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.75;
+  margin:10px 0;
+}
+
+.big-emoji{
   display:block;
-  font-size:clamp(75px,16vw,115px);
-  margin:20px 0;
-  filter:drop-shadow(0 12px 24px #e5a0c066);
+  font-size:clamp(68px,15vw,108px);
+  margin:17px 0;
+  filter:drop-shadow(0 12px 24px #e5a0c055);
   animation:float 3.5s ease-in-out infinite;
 }
-@keyframes float { 50% { transform:translateY(-12px); } }
-.divider {
-  width:80px;height:2px;margin:22px auto;
+
+@keyframes float{
+  50%{transform:translateY(-10px)}
+}
+
+.divider{
+  width:80px;
+  height:2px;
+  margin:20px auto;
   background:linear-gradient(90deg,transparent,var(--gold),transparent);
 }
-.pink { color:var(--rose); }
-.gold { color:var(--gold); }
-.quote {
-  padding:25px 18px;
-  border-radius:22px;
+
+.pink{color:var(--rose)}
+.gold{color:var(--gold)}
+
+.quote{
+  width:100%;
+  padding:23px 16px;
+  border-radius:21px;
   background:#ffffff0a;
   border:1px solid #ffffff17;
-  margin:20px 0;
+  margin:17px 0;
 }
-.quote-text {
+
+.quote-text{
   color:var(--white);
-  font:clamp(22px,5vw,31px)/1.5 Georgia,serif;
+  font:clamp(21px,5vw,30px)/1.5 Georgia,serif;
 }
-.number {
+
+.number{
   color:var(--rose);
   font-size:12px;
-  font-weight:700;
+  font-weight:750;
   letter-spacing:2px;
 }
-.description {
+
+.description{
   font-size:14px;
-  color:var(--muted);
 }
-.meter {
+
+.meter{
   width:100%;
   height:22px;
-  border:1px solid var(--border);
   background:#ffffff15;
+  border:1px solid var(--border);
   border-radius:25px;
   overflow:hidden;
-  margin:23px 0;
+  margin:20px 0;
 }
-.meter-fill {
-  height:100%;
+
+.meter-fill{
   width:0;
-  border-radius:25px;
+  height:100%;
   background:linear-gradient(90deg,var(--rose),var(--gold));
+  border-radius:25px;
 }
-.percent {
+
+.percent{
   color:var(--gold);
-  font:64px Georgia,serif;
+  font:clamp(48px,11vw,64px) Georgia,serif;
+  margin-top:12px;
 }
-.result-lines {
+
+.result-lines{
   color:var(--white);
   font-size:16px;
   line-height:2;
 }
-.footer-nav {
+
+.flower-gift{
+  font-size:clamp(85px,19vw,115px);
+  border:0;
+  background:transparent;
+  margin:12px 0;
+  animation:float 3s infinite;
+}
+
+.flower-gift.opened{
+  animation:none;
+  transform:scale(1.12) rotate(9deg);
+}
+
+.final-text{
+  color:#f8eaf0;
+  font-size:16px;
+}
+
+.signature{
+  color:var(--gold);
+  font:27px Georgia,serif;
+  margin:24px 0 12px;
+}
+
+/* SABİT ALT NAVİGASYON */
+.footer-nav{
+  position:relative;
+  z-index:10;
+  display:flex;
+  align-items:center;
   width:min(100%,680px);
   margin:0 auto;
-  display:flex;
   gap:10px;
   padding-top:9px;
+  padding-bottom:3px;
+  background:transparent;
 }
-.btn {
+
+.btn{
   border:0;
   min-height:52px;
   border-radius:999px;
-  padding:14px 23px;
-  color:#29233a;
+  padding:13px 20px;
   font-size:14px;
   font-weight:750;
+  color:#29233a;
   background:linear-gradient(115deg,#ffe6b7,#dbaa76);
-  box-shadow:0 10px 27px #d4a77333;
+  box-shadow:0 7px 25px #d4a77333;
   transition:transform .2s;
 }
-.btn:active { transform:scale(.97); }
-.btn-outline {
-  background:#ffffff0a;
+
+.btn:active{
+  transform:scale(.97);
+}
+
+.btn-outline{
   color:var(--gold);
+  background:#26283e;
   border:1px solid var(--border);
   box-shadow:none;
 }
-#backBtn { flex:0 0 auto; }
-#nextBtn { flex:1; }
-#nextBtn:disabled {
+
+#backBtn{
+  flex:0 0 auto;
+  min-width:90px;
+}
+
+#nextBtn{
+  flex:1 1 auto;
+  min-width:0;
+}
+
+#nextBtn:disabled{
   color:#b8afaa;
-  box-shadow:none;
   background:#5b5561;
+  box-shadow:none;
 }
-.flower-gift {
-  font-size:110px;
-  border:0;
-  background:transparent;
-  animation:float 3s infinite;
-}
-.flower-gift.opened {
-  transform:scale(1.2) rotate(10deg);
-  animation:none;
-}
-.final-text { color:#f8eaf0; font-size:16px; }
-.signature {
-  margin:24px 0 12px;
-  font:27px Georgia,serif;
-  color:var(--gold);
-}
-.particle {
+
+.particle{
   position:fixed;
-  z-index:50;
-  pointer-events:none;
   top:-45px;
   left:var(--left);
+  z-index:50;
   font-size:25px;
+  pointer-events:none;
   animation:fall var(--duration) linear forwards;
 }
-@keyframes fall {
-  to {
+
+@keyframes fall{
+  to{
     transform:translate(var(--drift),110vh) rotate(600deg);
     opacity:0;
   }
 }
-#toast {
+
+#toast{
   position:fixed;
-  z-index:60;
-  bottom:85px;
   left:50%;
+  bottom:calc(90px + env(safe-area-inset-bottom));
   transform:translateX(-50%);
+  z-index:60;
+  width:max-content;
+  max-width:calc(100% - 30px);
   padding:12px 19px;
-  border-radius:25px;
   border:1px solid var(--border);
+  border-radius:25px;
   color:var(--gold);
   background:#292b42;
   text-align:center;
   font-size:13px;
-  max-width:calc(100% - 30px);
+  box-shadow:0 10px 30px #0006;
 }
-@media(max-width:500px) {
-  .app { padding:12px 12px max(12px,env(safe-area-inset-bottom)); }
-  .stage { border-radius:23px;padding:24px 19px; }
-  .stage-area { padding:12px 0; }
-  .brand { font-size:9px;letter-spacing:1px; }
-  .big-emoji { margin:15px 0; }
-  h2 { margin:11px 0; }
-  .quote { padding:20px 14px; }
+
+/* Küçük telefonlar */
+@media(max-width:500px){
+  .app{
+    padding:
+      max(7px,env(safe-area-inset-top))
+      max(10px,env(safe-area-inset-right))
+      max(10px,env(safe-area-inset-bottom))
+      max(10px,env(safe-area-inset-left));
+  }
+  .topbar{min-height:43px}
+  .brand{font-size:9px;letter-spacing:.7px}
+  .icon-btn{width:38px;height:38px}
+  .stage-area{padding:7px 0}
+  .stage{padding:23px 17px;border-radius:22px}
+  .big-emoji{margin:13px 0}
+  h2{margin:10px 0}
+  .quote{padding:18px 13px}
+  .footer-nav{gap:8px;padding-top:8px}
+  .btn{min-height:50px;padding:12px 15px;font-size:13px}
+  #backBtn{min-width:77px}
 }
-@media(max-height:620px) {
-  .big-emoji { font-size:65px;margin:10px; }
-  h1 { font-size:40px; }
-  h2 { font-size:29px; }
-  p { line-height:1.5; }
+
+/* Ekran yüksekliği kısa olan cihazlar */
+@media(max-height:680px){
+  .stage{padding:18px 17px}
+  .big-emoji{font-size:65px;margin:8px 0}
+  h1{font-size:40px}
+  h2{font-size:28px}
+  p{font-size:14px;line-height:1.55}
+  .quote{margin:12px 0;padding:16px 13px}
+  .quote-text{font-size:22px}
+  .btn{min-height:46px}
+  .stage-area{padding:6px 0}
 }
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
     animation-duration:.01ms!important;
     transition-duration:.01ms!important;
     scroll-behavior:auto!important;
@@ -337,19 +492,20 @@ p { line-height:1.78; font-size:15px; color:var(--muted); }
 </head>
 
 <body>
+
 <div id="stars" aria-hidden="true"></div>
 
 <div class="app">
+
   <header class="topbar">
     <div class="brand">🌷 TAYYİBE TEYZE • SIGNATURE EDITION</div>
-    <div class="top-actions">
-      <button id="musicBtn" class="icon-btn" aria-label="Müziği aç" title="Müzik aç/kapat">🔇</button>
-    </div>
+    <button id="musicBtn" class="icon-btn"
+      aria-label="Müziği aç" title="Müzik aç/kapat">🔇</button>
   </header>
 
   <div class="progress-wrap">
     <div class="progress-info">
-      <span id="stageLabel">Sürpriz Yolculuğu</span>
+      <span id="stageLabel">Gizemli Açılış</span>
       <span id="stageCount">1 / 7</span>
     </div>
     <div class="progress">
@@ -358,13 +514,15 @@ p { line-height:1.78; font-size:15px; color:var(--muted); }
   </div>
 
   <main class="stage-area">
-    <div id="stage" class="stage" aria-live="polite"></div>
+    <section id="stage" class="stage" aria-label="Sürpriz içeriği">
+    </section>
   </main>
 
   <nav class="footer-nav" aria-label="Sürpriz adımları">
     <button id="backBtn" class="btn btn-outline">← Geri</button>
     <button id="nextBtn" class="btn">Sürprizi Aç 🎁</button>
   </nav>
+
 </div>
 
 <div id="toast" class="hidden" role="status"></div>
@@ -372,14 +530,14 @@ p { line-height:1.78; font-size:15px; color:var(--muted); }
 <script>
 "use strict";
 
-const $ = id => document.getElementById(id);
-const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $=id=>document.getElementById(id);
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const facts = [
+const facts=[
   {
     emoji:"😄",
     title:"1. Gülümseme Etkisi",
-    text:"Tayyibe teyzenin gülümsemesi, bulunduğu ortamın neşe seviyesini anında artırır. Bu etki karşısında bilim insanları hâlâ şaşkın!"
+    text:"Tayyibe teyzenin gülümsemesi, bulunduğu ortamın neşe seviyesini anında artırır. Bilim insanları bu güzel etki karşısında hâlâ şaşkın!"
   },
   {
     emoji:"☕",
@@ -403,7 +561,7 @@ const facts = [
   }
 ];
 
-const messages = [
+const messages=[
   "İş yerinin neşe kaynağı tespit edildi: TAYYİBE TEYZE! 😂",
   "Gülüşün bulaşıcı... İyi ki bunun karantinası yok! 🌸",
   "Teyze dedik ama kalbimizde VIP yer verdik! ❤️",
@@ -418,7 +576,7 @@ const messages = [
   "Bu sayfanın en güzel şeyi ne biliyor musun? Onu okuyan sensin! 🌸"
 ];
 
-const titles = [
+const titles=[
   "Gizemli Açılış",
   "Güzel Bir Karşılama",
   "5 Bilimsel Gerçek",
@@ -428,7 +586,7 @@ const titles = [
   "Kalpten Gelen Final"
 ];
 
-const state = {
+const state={
   stage:0,
   fact:0,
   message:0,
@@ -438,50 +596,51 @@ const state = {
   finalCelebrated:false
 };
 
-function celebrate(count=35, icons=["🌷","🌸","✨","💖","🎉"]) {
-  if(reduced) return;
-  for(let i=0;i<Math.min(count,80);i++) {
+let animationGeneration=0;
+
+function celebrate(count=35,icons=["🌷","🌸","✨","💖","🎉"]){
+  if(reduced)return;
+
+  for(let i=0;i<Math.min(count,80);i++){
     const el=document.createElement("span");
     el.className="particle";
     el.textContent=icons[Math.floor(Math.random()*icons.length)];
     el.style.setProperty("--left",Math.random()*100+"vw");
     el.style.setProperty("--drift",(Math.random()*180-90)+"px");
     el.style.setProperty("--duration",(3+Math.random()*3)+"s");
-    el.style.animationDelay=Math.random()*1+"s";
+    el.style.animationDelay=Math.random()+"s";
     document.body.appendChild(el);
     setTimeout(()=>el.remove(),7500);
   }
 }
 
 let toastTimer;
-function toast(text) {
+
+function toast(message){
   const el=$("toast");
-  el.textContent=text;
+  el.textContent=message;
   el.classList.remove("hidden");
   clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>el.classList.add("hidden"),2600);
+  toastTimer=setTimeout(()=>el.classList.add("hidden"),2800);
 }
 
-function render() {
+function render(){
   const stage=$("stage");
-  stage.style.animation="none";
-  void stage.offsetWidth;
-  stage.style.animation="";
 
   $("stageLabel").textContent=titles[state.stage];
   $("stageCount").textContent=(state.stage+1)+" / 7";
   $("progressFill").style.width=((state.stage+1)/7*100)+"%";
 
-  $("backBtn").disabled=state.stage===0 || state.measuring;
+  $("backBtn").disabled=state.stage===0||state.measuring;
 
   let html="";
   let nextLabel="Devam Et →";
   let disabled=false;
 
-  if(state.stage===0) {
+  if(state.stage===0){
     html=`
       <div class="eyebrow">✨ Çok Özel Bir Mesaj ✨</div>
-      <div class="big-emoji">🎁</div>
+      <span class="big-emoji">🎁</span>
       <h2>Bir Dakika Tayyibe Teyze!</h2>
       <p>
         Önemli bir duyurumuz var! 🚨<br>
@@ -494,12 +653,14 @@ function render() {
           Hazır mısın bakalım teyze? 🤭
         </div>
       </div>
-      <p class="pink">Uyarı: Aşırı tebessüm içerebilir!</p>
+      <p class="pink">
+        Uyarı: Aşırı tebessüm içerebilir!
+      </p>
     `;
     nextLabel="Sürprizi Aç 🎁";
   }
 
-  if(state.stage===1) {
+  if(state.stage===1){
     html=`
       <div class="eyebrow">🌷 Sana Özel Hazırlandı 🌷</div>
       <span class="big-emoji">💐</span>
@@ -508,8 +669,8 @@ function render() {
       <div class="divider"></div>
       <p>
         Bazı insanlar vardır, bulundukları yeri
-        güzelleştirir. Bir gülümsemeleriyle
-        neşe, samimiyetleriyle huzur verirler.
+        güzelleştirir. Bir gülümsemeleriyle neşe,
+        samimiyetleriyle huzur verirler.
       </p>
       <p class="pink">
         İşte sen tam da o güzel insanlardan birisin. ❤️
@@ -518,38 +679,51 @@ function render() {
     nextLabel="Bakalım Neler Var? 👀";
   }
 
-  if(state.stage===2) {
+  if(state.stage===2){
     const fact=facts[state.fact];
+
     html=`
-      <div class="eyebrow">Gülümseten Araştırmalar Merkezi</div>
+      <div class="eyebrow">
+        Gülümseten Araştırmalar Merkezi
+      </div>
       <h2>5 Bilimsel Gerçek 🔬</h2>
       <p class="description">
         Tamamen eğlence amaçlı araştırmalarımızın sonuçları!
       </p>
       <div class="quote">
         <span class="big-emoji">${fact.emoji}</span>
-        <div class="number">ARAŞTIRMA ${state.fact+1} / 5</div>
+        <div class="number">
+          ARAŞTIRMA ${state.fact+1} / 5
+        </div>
         <h3>${fact.title}</h3>
         <p>${fact.text}</p>
       </div>
-      <p class="pink">Bilim dünyası bu teyzenin peşinde! 😄</p>
+      <p class="pink">
+        Bilim dünyası bu teyzenin peşinde! 😄
+      </p>
     `;
-    nextLabel=state.fact===4?"Mesajlara Geç 💌":"Sıradaki Gerçek →";
+    nextLabel=state.fact===4
+      ?"Mesajlara Geç 💌"
+      :"Sıradaki Gerçek →";
   }
 
-  if(state.stage===3) {
+  if(state.stage===3){
     html=`
-      <div class="eyebrow">Tayyibe Teyze Özel Mesaj Servisi</div>
+      <div class="eyebrow">
+        Tayyibe Teyze Özel Mesaj Servisi
+      </div>
       <h2>Biraz Gülümseyelim mi? 😄</h2>
       <p>Her butonda sana özel yeni bir mesaj.</p>
       <div class="quote">
-        <div class="number">MESAJ ${state.message+1} / ${messages.length}</div>
-        <div class="quote-text" style="margin-top:24px">
+        <div class="number">
+          MESAJ ${state.message+1} / ${messages.length}
+        </div>
+        <div class="quote-text" style="margin-top:20px">
           ${messages[state.message]}
         </div>
       </div>
       <p class="pink">
-        Bunları okurken gülümsüyorsan görev başarıyla tamamlanıyor! 🌸
+        Gülümsüyorsan görev başarıyla tamamlanıyor! 🌸
       </p>
     `;
     nextLabel=state.message===messages.length-1
@@ -557,53 +731,71 @@ function render() {
       :"Sonraki Mesaj 💌";
   }
 
-  if(state.stage===4) {
+  if(state.stage===4){
     html=`
       <div class="eyebrow">Küçük Bir Hediye</div>
       <h2>Bu Çiçekler Sana! 💐</h2>
       <p>
-        Gerçek çiçekler solar ama
-        güzel insanların kalbimizde bıraktığı
-        izler hep yaşar.
+        Gerçek çiçekler solar ama güzel insanların
+        kalbimizde bıraktığı izler hep yaşar.
       </p>
-      <button id="flowerBtn" class="flower-gift ${state.flowerOpened?"opened":""}"
-        aria-label="Çiçek sürprizini aç">💐</button>
+
+      <button id="flowerBtn"
+        class="flower-gift ${state.flowerOpened?"opened":""}"
+        aria-label="Çiçek sürprizini aç">
+        💐
+      </button>
+
       ${
         state.flowerOpened
-        ? `<div class="quote">
+        ? `
+          <div class="quote">
             <h3>Güzel Kalpli Teyzeme 🌷</h3>
             <p>
               Bu çiçekler, güler yüzün,
               güzel şakaların, anlayışın ve
               samimiyetin için küçük bir teşekkür.
             </p>
-            <p class="pink">İyi ki seni tanımışım! ❤️</p>
-          </div>`
-        : `<p class="pink">Çiçeklere dokun, küçük bir sürpriz var! 🌸</p>`
+            <p class="pink">
+              İyi ki seni tanımışım! ❤️
+            </p>
+          </div>
+        `
+        : `
+          <p class="pink">
+            Çiçeklere dokun, küçük bir sürpriz var! 🌸
+          </p>
+        `
       }
     `;
+
     disabled=!state.flowerOpened;
     nextLabel="Mutluluk Testine Geç 💖";
   }
 
-  if(state.stage===5) {
+  if(state.stage===5){
     html=`
-      <div class="eyebrow">Tayyibe Teyze Özel Test Merkezi</div>
+      <div class="eyebrow">
+        Tayyibe Teyze Özel Test Merkezi
+      </div>
       <h2>Mutluluk Ölçer 📊</h2>
       <p>
-        Bakalım güzel kalp ve neşe seviyen
-        kaç çıkacak teyze?
+        Bakalım güzel kalp ve neşe seviyen kaç çıkacak teyze?
       </p>
+
       <div class="percent" id="percentage">
         ${state.measured?"100%":"0%"}
       </div>
       <div class="meter">
         <div class="meter-fill" id="meterFill"
-          style="width:${state.measured?100:0}%"></div>
+          style="width:${state.measured?100:0}%">
+        </div>
       </div>
+
       ${
         state.measured
-        ? `<div class="quote">
+        ? `
+          <div class="quote">
             <h3>SONUÇ: MÜKEMMEL! 🎉</h3>
             <div class="result-lines">
               %100 Güler Yüz<br>
@@ -615,18 +807,22 @@ function render() {
               ⚠️ Bu kadar güzel kalplilik cihazın
               kapasitesini aştı. Teknik ekip şaşkın! 😂
             </p>
-          </div>`
-        : `<button class="btn btn-outline" id="measureBtn"
-             style="margin-top:15px">
-             Ölçümü Başlat 🔍
-           </button>`
+          </div>
+        `
+        : `
+          <button class="btn btn-outline"
+            id="measureBtn" style="margin-top:15px">
+            Ölçümü Başlat 🔍
+          </button>
+        `
       }
     `;
+
     disabled=!state.measured;
     nextLabel="Son Mesajı Oku ❤️";
   }
 
-  if(state.stage===6) {
+  if(state.stage===6){
     html=`
       <div class="eyebrow">Kalpten Gelen Birkaç Söz</div>
       <span class="big-emoji">❤️</span>
@@ -638,6 +834,7 @@ function render() {
         Onlarla tanışmak insana kendini
         şanslı hissettirir.
       </p>
+
       <p class="final-text">
         Sen de benim için böyle birisin.
         Şakalarınla güldüren, anlayışınla
@@ -645,61 +842,74 @@ function render() {
         bulunduğun yeri güzelleştiren
         güzel kalpli bir insansın.
       </p>
+
       <p class="final-text">
         Sana “teyze” demem sadece bir hitap değil.
         İçinde sevgi, saygı ve samimiyet var.
       </p>
+
       <p class="final-text">
         Dilerim yüzündeki güzel gülümseme
-        hiç eksik olmasın.
-        Hayat sana, senin insanlara kattığın
-        güzellikleri getirsin.
+        hiç eksik olmasın. Hayat sana,
+        senin insanlara kattığın güzellikleri getirsin.
       </p>
 
-      <div class="signature">İyi ki tanımışım seni. 🌷</div>
-      <p class="pink">Hep böyle güzel gül, olur mu teyze? 😊</p>
+      <div class="signature">
+        İyi ki tanımışım seni. 🌷
+      </div>
+
+      <p class="pink">
+        Hep böyle güzel gül, olur mu teyze? 😊
+      </p>
     `;
+
     nextLabel=state.finalCelebrated
       ?"Sürprizi Baştan İzle 🔄"
       :"Son Bir Sürpriz 🎉";
   }
 
-  stage.innerHTML=html;
+  stage.innerHTML=`<div class="stage-content">${html}</div>`;
   stage.scrollTop=0;
 
   $("nextBtn").textContent=nextLabel;
-  $("nextBtn").disabled=disabled || state.measuring;
+  $("nextBtn").disabled=disabled||state.measuring;
 
   const flowerBtn=$("flowerBtn");
-  if(flowerBtn)flowerBtn.addEventListener("click",openFlower);
+  if(flowerBtn){
+    flowerBtn.addEventListener("click",openFlower);
+  }
 
   const measureBtn=$("measureBtn");
-  if(measureBtn)measureBtn.addEventListener("click",measure);
+  if(measureBtn){
+    measureBtn.addEventListener("click",measure);
+  }
 }
 
-function next() {
+function next(){
   if(state.measuring)return;
 
-  if(state.stage===2 && state.fact<facts.length-1) {
+  if(state.stage===2 && state.fact<facts.length-1){
     state.fact++;
     render();
     return;
   }
-  if(state.stage===3 && state.message<messages.length-1) {
+
+  if(state.stage===3 && state.message<messages.length-1){
     state.message++;
     render();
     return;
   }
+
   if(state.stage===4 && !state.flowerOpened)return;
   if(state.stage===5 && !state.measured)return;
 
-  if(state.stage===6) {
-    if(!state.finalCelebrated) {
+  if(state.stage===6){
+    if(!state.finalCelebrated){
       state.finalCelebrated=true;
       celebrate(80,["🌷","💖","🌸","✨","🎉","❤️"]);
       toast("İyi ki varsın Tayyibe Teyze! ❤️");
       render();
-    } else {
+    }else{
       resetStory();
     }
     return;
@@ -712,30 +922,31 @@ function next() {
   if(state.stage===6)celebrate(35);
 }
 
-function back() {
+function back(){
   if(state.measuring)return;
 
-  if(state.stage===2 && state.fact>0) {
+  if(state.stage===2 && state.fact>0){
     state.fact--;
-  } else if(state.stage===3 && state.message>0) {
+  }else if(state.stage===3 && state.message>0){
     state.message--;
-  } else if(state.stage>0) {
+  }else if(state.stage>0){
     state.stage--;
   }
+
   render();
 }
 
-function openFlower() {
-  if(!state.flowerOpened) {
-    state.flowerOpened=true;
-    celebrate(45,["🌷","🌸","💗","🌼","✨"]);
-    render();
-    toast("Bu çiçekler güzel kalpli teyzemize! 💐");
-  }
+function openFlower(){
+  if(state.flowerOpened)return;
+
+  state.flowerOpened=true;
+  celebrate(45,["🌷","🌸","💗","🌼","✨"]);
+  render();
+  toast("Bu çiçekler güzel kalpli teyzemize! 💐");
 }
 
-function measure() {
-  if(state.measuring || state.measured)return;
+function measure(){
+  if(state.measuring||state.measured)return;
 
   state.measuring=true;
   $("nextBtn").disabled=true;
@@ -745,16 +956,28 @@ function measure() {
 
   const duration=reduced?0:2100;
   const start=performance.now();
+  const generation=++animationGeneration;
 
-  function frame(now) {
-    const ratio=duration===0?1:Math.min((now-start)/duration,1);
-    const value=Math.round((1-Math.pow(1-ratio,3))*100);
+  function frame(now){
+    if(generation!==animationGeneration)return;
 
-    $("percentage").textContent=value+"%";
-    $("meterFill").style.width=value+"%";
+    const ratio=duration===0
+      ?1
+      :Math.min((now-start)/duration,1);
 
-    if(ratio<1)requestAnimationFrame(frame);
-    else {
+    const value=Math.round(
+      (1-Math.pow(1-ratio,3))*100
+    );
+
+    const percentage=$("percentage");
+    const fill=$("meterFill");
+
+    if(percentage)percentage.textContent=value+"%";
+    if(fill)fill.style.width=value+"%";
+
+    if(ratio<1){
+      requestAnimationFrame(frame);
+    }else{
       state.measuring=false;
       state.measured=true;
       render();
@@ -762,10 +985,12 @@ function measure() {
       toast("Ölçüm tamamlandı: EŞSİZ! 🎉");
     }
   }
+
   requestAnimationFrame(frame);
 }
 
-function resetStory() {
+function resetStory(){
+  animationGeneration++;
   state.stage=0;
   state.fact=0;
   state.message=0;
@@ -779,9 +1004,9 @@ function resetStory() {
 $("nextBtn").addEventListener("click",next);
 $("backBtn").addEventListener("click",back);
 
-// Yıldızlı arka plan
-if(!reduced) {
-  for(let i=0;i<60;i++) {
+/* Yıldızlı arka plan */
+if(!reduced){
+  for(let i=0;i<60;i++){
     const star=document.createElement("span");
     star.className="star";
     star.style.left=Math.random()*100+"%";
@@ -791,11 +1016,12 @@ if(!reduced) {
   }
 }
 
-// İsteğe bağlı hafif melodik ses
+/* İsteğe bağlı sözsüz melodi */
 let audioContext=null;
 let musicOn=false;
-let timer=null;
-let note=0;
+let musicTimer=null;
+let noteIndex=0;
+
 const melody=[
   261.63,329.63,392,523.25,
   493.88,392,329.63,293.66,
@@ -803,72 +1029,84 @@ const melody=[
   349.23,329.63,293.66,261.63
 ];
 
-function playNote(freq) {
+function playNote(freq){
   if(!audioContext || audioContext.state!=="running")return;
 
   const now=audioContext.currentTime;
-  const oscillator=audioContext.createOscillator();
+  const osc=audioContext.createOscillator();
   const gain=audioContext.createGain();
 
-  oscillator.type="sine";
-  oscillator.frequency.value=freq;
+  osc.type="sine";
+  osc.frequency.value=freq;
 
   gain.gain.setValueAtTime(.0001,now);
   gain.gain.exponentialRampToValueAtTime(.045,now+.05);
   gain.gain.exponentialRampToValueAtTime(.0001,now+.9);
 
-  oscillator.connect(gain);
+  osc.connect(gain);
   gain.connect(audioContext.destination);
-  oscillator.start(now);
-  oscillator.stop(now+.95);
+
+  osc.start(now);
+  osc.stop(now+.95);
 }
 
-function startMusic() {
-  clearInterval(timer);
-  playNote(melody[note++%melody.length]);
-  timer=setInterval(()=>{
-    playNote(melody[note++%melody.length]);
+function startMusic(){
+  clearInterval(musicTimer);
+  playNote(melody[noteIndex++%melody.length]);
+
+  musicTimer=setInterval(()=>{
+    playNote(melody[noteIndex++%melody.length]);
   },720);
 }
 
 $("musicBtn").addEventListener("click",async()=>{
-  try {
-    if(!musicOn) {
-      const AudioClass=window.AudioContext||window.webkitAudioContext;
-      if(!AudioClass) {
+  try{
+    if(!musicOn){
+      const AudioClass=
+        window.AudioContext||window.webkitAudioContext;
+
+      if(!AudioClass){
         toast("Tarayıcı ses özelliğini desteklemiyor.");
         return;
       }
-      if(!audioContext || audioContext.state==="closed")
+
+      if(!audioContext||audioContext.state==="closed"){
         audioContext=new AudioClass();
+      }
 
       await audioContext.resume();
       musicOn=true;
+
       $("musicBtn").textContent="🎵";
       $("musicBtn").setAttribute("aria-label","Müziği kapat");
       startMusic();
-    } else {
+
+    }else{
       musicOn=false;
-      clearInterval(timer);
-      timer=null;
-      if(audioContext && audioContext.state==="running")
+      clearInterval(musicTimer);
+      musicTimer=null;
+
+      if(audioContext&&audioContext.state==="running"){
         await audioContext.suspend();
+      }
+
       $("musicBtn").textContent="🔇";
       $("musicBtn").setAttribute("aria-label","Müziği aç");
     }
-  } catch(e) {
-    console.warn(e);
+  }catch(error){
+    console.warn(error);
     toast("Müzik başlatılamadı.");
   }
 });
 
 document.addEventListener("visibilitychange",()=>{
-  if(!musicOn || !audioContext)return;
-  if(document.hidden) {
-    clearInterval(timer);
-    timer=null;
+  if(!musicOn||!audioContext)return;
+
+  if(document.hidden){
+    clearInterval(musicTimer);
+    musicTimer=null;
     audioContext.suspend();
-  } else {
+  }else{
     audioContext.resume().then(()=>{
       if(musicOn)startMusic();
     }).catch(()=>{});
